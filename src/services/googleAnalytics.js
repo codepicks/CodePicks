@@ -1,7 +1,8 @@
 import { GoogleAnalyticsTracker } from 'react-native-google-analytics-bridge'
+import { GOOGLE_ANALYTICS_UID } from 'react-native-dotenv'
 import { getCurrentRouteName, getCurrentRouteParams } from '../utils'
 
-export const tracker = new GoogleAnalyticsTracker('UA-116967180-7', {
+export const tracker = new GoogleAnalyticsTracker(GOOGLE_ANALYTICS_UID, {
   Category: 1,
   URL: 2,
 })

@@ -26,44 +26,36 @@ class ArticleListScreen extends Component {
             articles={this.props.articles.all}
           />
           <ArticleList
-            key='industry'
-            tabLabel='業界・できごと'
+            key='oss'
+            tabLabel='オープンソース'
             fetchArticles={() => {
-              this.props.articlesFetch('industry')
+              this.props.articlesFetch('oss')
             }}
-            articles={this.props.articles.industry}
+            articles={this.props.articles.oss}
           />
           <ArticleList
-            key='management'
-            tabLabel='経営・開業'
+            key='productivity_tips'
+            tabLabel='生産性Tips'
             fetchArticles={() => {
-              this.props.articlesFetch('management')
+              this.props.articlesFetch('productivity_tips')
             }}
-            articles={this.props.articles.management}
+            articles={this.props.articles.productivity_tips}
           />
           <ArticleList
-            key='life'
-            tabLabel='人生・暮らし'
+            key='personal_dev'
+            tabLabel='個人開発'
             fetchArticles={() => {
-              this.props.articlesFetch('life')
+              this.props.articlesFetch('personal_dev')
             }}
-            articles={this.props.articles.life}
+            articles={this.props.articles.personal_dev}
           />
           <ArticleList
-            key='academic'
-            tabLabel='アカデミック'
+            key='freelance'
+            tabLabel='フリーランス'
             fetchArticles={() => {
-              this.props.articlesFetch('academic')
+              this.props.articlesFetch('freelance')
             }}
-            articles={this.props.articles.academic}
-          />
-          <ArticleList
-            key='clinical'
-            tabLabel='臨床・診療'
-            fetchArticles={() => {
-              this.props.articlesFetch('clinical')
-            }}
-            articles={this.props.articles.clinical}
+            articles={this.props.articles.フリーランス}
           />
         </ScrollableTabView>
       </ViewContainer>

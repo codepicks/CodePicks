@@ -3,12 +3,16 @@ import { createStackNavigator, createBottomTabNavigator } from 'react-navigation
 import { Icon } from 'react-native-elements'
 import {
   ArticleListScreen,
+  MyPicksScreen,
+  MenuScreen,
 } from './screens'
+import { colors } from './config'
+import { getCurrentRouteName } from './utils'
 
 export const MainNavigator = createBottomTabNavigator({
-  NewsList: {
+  ArticleList: {
     screen: createStackNavigator({
-      NewsList: {
+      ArticleList: {
         screen: ArticleListScreen,
         navigationOptions: {
           header: null
@@ -27,6 +31,58 @@ export const MainNavigator = createBottomTabNavigator({
           />
         )
       },
+    }),
+  },
+  MyPicks: {
+    screen: createStackNavigator({
+      MyPicks: {
+        screen: MyPicksScreen
+      }
+    }, {
+      headerMode: 'none',
+    }),
+    navigationOptions: {
+      title: 'マイピックス',
+      tabBarIcon: ({ tintColor }) => {
+        return (
+          <Icon
+            type="font-awesome"
+            name="bookmark"
+            size={22}
+            color={tintColor}
+          />
+        )
+      },
+    },
+  },
+  Menu: {
+    screen: createStackNavigator({
+      Menu: {
+        screen: MenuScreen,
+        navigationOptions: {
+          headerTitle: 'メニュー',
+          headerStyle: {
+            backgroundColor: colors.primaryBlue,
+          },
+          headerTitleStyle: {
+            color: colors.white,
+          }
+        }
+      }
+    }),
+    navigationOptions: ({ navigation }) => ({
+      title: 'メニュー',
+      tabBarIcon: ({ tintColor }) => {
+        return (
+          <Icon
+            type="entypo"
+            name="menu"
+            size={22}
+            color={tintColor}
+          />
+        )
+      },
+      tabBarVisible: getCurrentRouteName(navigation.state) !== 'WebView'
     }),
   },
 })
