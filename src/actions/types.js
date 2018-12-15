@@ -1,0 +1,2 @@
+// Articles
+export const ARTICLES_FETCH_SUCCESS = 'ARTICLES_FETCH_SUCCESS'
