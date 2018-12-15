@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
-import { LayoutAnimation } from 'react-native'
-import { List, ListItem, Text, Left, Right, Icon } from 'native-base'
-import { ViewContainer } from '../components'
+import { LayoutAnimation, StyleSheet } from 'react-native'
+import { List, ListItem, Text, Left, Right, Icon, View } from 'native-base'
+import { ViewContainer, MenuFooterAd } from '../components'
 import { tracker } from '../services/googleAnalytics'
 
 class MenuScreen extends Component {
@@ -58,7 +58,7 @@ class MenuScreen extends Component {
             noIndent
             onPress={() => this.openWebView({
               title: '利用規約',
-              source_url: '#',
+              source_url: 'https://codepicks.jp/terms/',
               event: '利用規約',
             })}
           >
@@ -73,7 +73,7 @@ class MenuScreen extends Component {
             noIndent
             onPress={() => this.openWebView({
               title: 'プライバシーポリシー',
-              source_url: '#',
+              source_url: 'https://codepicks.jp/privacy-policy/',
               event: 'プライバシーポリシー',
             })}
           >
@@ -85,9 +85,21 @@ class MenuScreen extends Component {
             </Right>
           </ListItem>
         </List>
+
+        <View style={styles.adContainer}>
+          <MenuFooterAd />
+        </View>
       </ViewContainer>
     )
   }
 }
+
+const styles = StyleSheet.create({
+  adContainer: {
+    flex: 1,
+    justifyContent: 'flex-end',
+    marginBottom: 20,
+  },
+})
 
 export default MenuScreen

@@ -5,9 +5,18 @@ import {
   ArticleListScreen,
   MyPicksScreen,
   MenuScreen,
+  WebViewScreen,
 } from './screens'
+import { WebViewNavigationOptions } from './navigationOptions'
 import { colors } from './config'
 import { getCurrentRouteName } from './utils'
+
+const sharedRoutes = {
+  WebView: {
+    screen: WebViewScreen,
+    navigationOptions: ({ navigation }) => WebViewNavigationOptions(navigation)
+  },
+}
 
 export const MainNavigator = createBottomTabNavigator({
   ArticleList: {
@@ -18,8 +27,9 @@ export const MainNavigator = createBottomTabNavigator({
           header: null
         }
       },
+      ...sharedRoutes
     }),
-    navigationOptions: () => ({
+    navigationOptions: navigation => ({
       title: 'エントリー',
       tabBarIcon: ({ tintColor }) => {
         return (
@@ -31,6 +41,7 @@ export const MainNavigator = createBottomTabNavigator({
           />
         )
       },
+      tabBarVisible: getCurrentRouteName(navigation.state) !== 'WebView'
     }),
   },
   MyPicks: {
