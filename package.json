@@ -16,7 +16,6 @@
     "react-native-dotenv": "^0.2.0",
     "react-native-elements": "^0.19.1",
     "react-native-google-analytics-bridge": "^6.1.0",
-    "react-native-push-notification": "^3.1.1",
     "react-native-router-flux": "^4.0.1",
     "react-native-scrollable-tab-view": "happypancake/react-native-scrollable-tab-view#master",
     "react-native-share": "^1.1.2",

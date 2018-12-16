@@ -6,7 +6,6 @@ import com.facebook.react.ReactApplication;
 import com.oblador.vectoricons.VectorIconsPackage;
 import cl.json.RNSharePackage;
 import cl.json.ShareApplication;
-import com.dieam.reactnativepushnotification.ReactNativePushNotificationPackage;
 import com.idehub.GoogleAnalyticsBridge.GoogleAnalyticsBridgePackage;
 import com.facebook.react.ReactNativeHost;
 import com.facebook.react.ReactPackage;
@@ -30,7 +29,6 @@ public class MainApplication extends Application implements ReactApplication {
           new MainReactPackage(),
             new VectorIconsPackage(),
             new RNSharePackage(),
-            new ReactNativePushNotificationPackage(),
             new GoogleAnalyticsBridgePackage()
       );
     }
