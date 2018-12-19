@@ -84,11 +84,25 @@ class MenuScreen extends Component {
               <Icon name="arrow-forward" />
             </Right>
           </ListItem>
+          <ListItem
+            noIndent
+            onPress={() => this.openWebView({
+              title: 'CodePicksリポジトリ(Github)',
+              source_url: 'https://github.com/kangyoosam/codepicks',
+              event: 'CodePicksリポジトリ(Github)',
+            })}
+          >
+            <Left>
+              <Text>CodePicksリポジトリ(Github)</Text>
+            </Left>
+            <Right>
+              <Icon name="arrow-forward" />
+            </Right>
+          </ListItem>
         </List>
-
-        <View style={styles.adContainer}>
+        {/* <View style={styles.adContainer}>
           <MenuFooterAd />
-        </View>
+        </View> */}
       </ViewContainer>
     )
   }

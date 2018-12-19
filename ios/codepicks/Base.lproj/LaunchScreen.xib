@@ -15,15 +15,15 @@
             <rect key="frame" x="0.0" y="0.0" width="480" height="480"/>
             <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMaxX="YES" flexibleMinY="YES" heightSizable="YES" flexibleMaxY="YES"/>
             <subviews>
-                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="vertical_tagline_on_corporate_by_logaster-1" translatesAutoresizingMaskIntoConstraints="NO" id="hMk-qj-zvV">
-                    <rect key="frame" x="114" y="119" width="251" height="243"/>
-                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="vertical_tagline_on_corporate_by_logaster-1" translatesAutoresizingMaskIntoConstraints="NO" id="hMk-qj-zvV">
+                    <rect key="frame" x="52" y="69" width="377" height="343"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMaxX="YES" flexibleMinY="YES" heightSizable="YES" flexibleMaxY="YES"/>
                 </imageView>
             </subviews>
-            <color key="backgroundColor" red="0.13909479975700378" green="0.086399905383586884" blue="0.32892930507659912" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <color key="backgroundColor" red="0.13725490196078433" green="0.086274509803921567" blue="0.32941176470588235" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
             <nil key="simulatedStatusBarMetrics"/>
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
-            <point key="canvasLocation" x="550" y="452"/>
+            <point key="canvasLocation" x="548.79999999999995" y="451.57421289355324"/>
         </view>
     </objects>
     <resources>

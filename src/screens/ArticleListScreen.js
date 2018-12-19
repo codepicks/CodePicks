@@ -55,7 +55,7 @@ class ArticleListScreen extends Component {
             fetchArticles={() => {
               this.props.articlesFetch('freelance')
             }}
-            articles={this.props.articles.フリーランス}
+            articles={this.props.articles.freelance}
           />
         </ScrollableTabView>
       </ViewContainer>
