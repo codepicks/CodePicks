@@ -1,7 +1,7 @@
 <h1 align="center"> CodePicks </h1> <br>
 <p align="center">
   <a href="https://codepicks.jp/">
-    <img alt="GitPoint" title="CodePicks" src="https://i.imgur.com/V4XvziI.png" width="450">
+    <img alt="GitPoint" title="CodePicks" src="https://i.imgur.com/6xHle0p.png" width="450">
   </a>
 </p>
 
@@ -10,10 +10,6 @@
 </p>
 
 <p align="center">
-  <a href="#">
-    <img alt="Download on the App Store" title="App Store" src="http://i.imgur.com/0n2zqHD.png" width="140">
-  </a>
-
   <a href="https://play.google.com/store/apps/details?id=com.codepicks">
     <img alt="Get it on Google Play" title="Google Play" src="http://i.imgur.com/mtGRPuM.png" width="140">
   </a>
@@ -23,8 +19,7 @@
 
 - [Introduction](#introduction)
 - [RoadMap](#roadmap)
-- [Feedback/Contribution](#feedback)
-- [Contributors](#contributors)
+- [Feedback](#feedback)
 - [Build Process](#build-process)
 
 ## Introduction
@@ -45,7 +40,7 @@ CodePicksは、#エンジニア #個人開発 #フリーランス #オープン�
 **iOS版は現在審査中です🙇‍**
 
 <p align="center">
-  <img src = "https://i.imgur.com/ZKxWYgV.png" width=350>
+  <img src = "https://i.imgur.com/ZKxWYgV.png" width=550>
 </p>
 
 ## RoadMap
@@ -60,7 +55,7 @@ CodePicksは、#エンジニア #個人開発 #フリーランス #オープン�
 - [ ] 各種SNSへのシェア機能
 - [ ] 他のユーザをフォロー
 
-## Feedback/Contribution
+## Feedback
 
 フィードバックやお問い合わせ・質問などは [Twitter](https://twitter.com/codepicks) もしくは [file an issue](https://github.com/KangYoosam/CodePicks/issues/new) でお気軽にお願いします。 機能要望はいつでもウェルカムです！ まだコントリビュートガイドラインはまだ決まっていません。コントリビュートしてくださる方は勝手にPullRequestを送ってください。
 https://twitter.com/kangyoosam に連絡していただくか、定期的に開催する（予定の） [ReactNaitve勉強会](https://r-n.connpass.com/event/112874/)にてご質問ください。
