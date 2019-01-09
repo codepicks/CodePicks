@@ -6,6 +6,7 @@ import {
   StyleSheet,
   LayoutAnimation,
   Share,
+  Platform,
 } from 'react-native'
 import { Footer } from 'native-base'
 import { Icon } from 'react-native-elements'
@@ -103,13 +104,17 @@ const styles = StyleSheet.create({
   footer: {
     height: 20,
     backgroundColor: '#FFF',
-    shadowColor: '#ccc',
-    shadowOffset: {
-      width: 1,
-      height: 2,
-    },
-    shadowRadius: 1,
-    shadowOpacity: 1,
+    ...Platform.select({
+      ios: {
+        shadowColor: 'black',
+        shadowOffset: { height: -3 },
+        shadowOpacity: 0.1,
+        shadowRadius: 3,
+      },
+      android: {
+        elevation: 20,
+      },
+    }),
   },
   footerLeft: {
     flex: 1,
