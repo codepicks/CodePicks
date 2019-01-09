@@ -43,7 +43,6 @@ const ArticleList = {
   }),
 }
 
-
 const HomeStack = createStackNavigator({
   Home: HomeScreen,
 })
