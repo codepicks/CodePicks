@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import { FlatList } from 'react-native'
 import TimerMixin from 'react-timer-mixin'
-import { ArticleCard, ArticleThumbnail } from '.'
+import { ArticleCard, ArticleThumbnail } from './'
 
 export default class ArticleList extends Component {
   constructor(props) {
