@@ -1,7 +1,7 @@
 import React from 'react'
 import { createStackNavigator, createBottomTabNavigator } from 'react-navigation'
 import { TabBarIcon } from '../components'
-import { WebViewScreen, ArticleListScreen, MenuScreen } from '../screens'
+import { WebViewScreen, ArticleListScreen, MyPicksScreen, MenuScreen } from '../screens'
 import { WebViewNavigationOptions } from '../navigationOptions'
 import { colors } from '../constants'
 import { getCurrentRouteName } from '../utils'
@@ -38,6 +38,28 @@ const ArticleList = {
   }),
 }
 
+const MyPicks = {
+  screen: createStackNavigator({
+    MyPicks: {
+      screen: MyPicksScreen
+    }
+  }, {
+    headerMode: 'none',
+  }),
+  navigationOptions: {
+    title: 'マイピックス',
+    tabBarIcon: ({ focused }) => {
+      return(
+        <TabBarIcon
+          focused={focused}
+          type="FontAwesome"
+          name="bookmark"
+        />
+      )
+    },
+  },
+}
+
 const Menu = {
   screen: createStackNavigator({
     Menu: {
@@ -68,5 +90,6 @@ const Menu = {
 
 export default createBottomTabNavigator({
   ArticleList,
+  MyPicks,
   Menu,
 })
