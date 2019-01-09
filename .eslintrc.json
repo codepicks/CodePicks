@@ -29,5 +29,8 @@
     "global-require": 0,
     "camelcase": 0,
     "arrow-body-style": 0
+  },
+  "globals": {
+    "__DEV__": true
   }
 }
