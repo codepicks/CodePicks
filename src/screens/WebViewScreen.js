@@ -5,10 +5,10 @@ import {
   TouchableOpacity,
   StyleSheet,
   LayoutAnimation,
+  Share,
 } from 'react-native'
 import { Footer } from 'native-base'
 import { Icon } from 'react-native-elements'
-// import Share from 'react-native-share'
 import { ViewContainer, BookmarkIcon } from '../components'
 import { colors } from '../constants'
 
@@ -72,9 +72,9 @@ class WebViewScreen extends Component {
           </View>
           <View style={styles.footerRight}>
             <View style={styles.rightButtonsContainer}>
-              {/* <TouchableOpacity
-                onPress={() => Share.open({
-                  source_url,
+              <TouchableOpacity
+                onPress={() => Share.share({
+                  url: source_url,
                   message: title,
                   title,
                   subject: '【1D News】ニュースの共有',
@@ -88,7 +88,7 @@ class WebViewScreen extends Component {
                   name="share-alternative"
                   size={20}
                 />
-              </TouchableOpacity> */}
+              </TouchableOpacity>
               <BookmarkIcon containerStyle={styles.bookmarkIcon} />
             </View>
           </View>
@@ -101,7 +101,7 @@ class WebViewScreen extends Component {
 const styles = StyleSheet.create({
   // FIXME: shadow効かせる
   footer: {
-    height: 40,
+    height: 20,
     backgroundColor: '#FFF',
     shadowColor: '#ccc',
     shadowOffset: {
@@ -125,7 +125,7 @@ const styles = StyleSheet.create({
     flex: 1,
     flexDirection: 'row',
     alignItems: 'flex-end',
-    justifyContent: 'flex-end'
+    justifyContent: 'flex-end',
   },
   footerShareIcon: {
     flex: 3,
@@ -137,7 +137,7 @@ const styles = StyleSheet.create({
     flex: 1,
     flexDirection: 'row',
     justifyContent: 'flex-end',
-    marginRight: 20
+    marginRight: 20,
   },
 })
 
