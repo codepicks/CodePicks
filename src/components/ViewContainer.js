@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import { View, StyleSheet, StatusBar } from 'react-native'
-import { colors } from '../config'
+import { colors } from '../constants'
 
 export default class ViewContainer extends Component {
   render() {

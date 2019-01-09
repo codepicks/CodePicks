@@ -3,7 +3,7 @@ import {
   View, Text, TouchableOpacity, StyleSheet,
 } from 'react-native'
 import { Thumbnail } from 'native-base'
-import { colors } from '../config'
+import { colors } from '../constants'
 
 class ThumbnailCard extends Component {
   render() {

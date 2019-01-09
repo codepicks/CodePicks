@@ -20,12 +20,14 @@
         ]
       }
     ],
+    "react/prefer-stateless-function": 0,
     "no-use-before-define": [
       "error", { "variables": false }
     ],
     "react/prop-types": 0,
     "no-console": 0,
     "global-require": 0,
-    "camelcase": 0
+    "camelcase": 0,
+    "arrow-body-style": 0
   }
 }

@@ -1,6 +1,7 @@
 const tintColor = '#2f95dc'
 
 export default {
+  // expo
   tintColor,
   tabIconDefault: '#ccc',
   tabIconSelected: tintColor,
@@ -11,4 +12,10 @@ export default {
   warningText: '#666804',
   noticeBackground: tintColor,
   noticeText: '#fff',
+
+  // original
+  white: '#ffffff',
+  fontGray: '#4D4D4D',
+  fontLightGray: '#B9BABF',
+  primaryBlue: '#152F70',
 }

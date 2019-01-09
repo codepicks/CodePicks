@@ -6,7 +6,8 @@ import TabBarIcon from '../components/TabBarIcon'
 import HomeScreen from '../screens/HomeScreen'
 import LinksScreen from '../screens/LinksScreen'
 import MenuScreen from '../screens/MenuScreen'
-import { colors } from '../config'
+import { colors } from '../constants'
+import { getCurrentRouteName } from '../utils'
 
 const HomeStack = createStackNavigator({
   Home: HomeScreen,
@@ -40,31 +41,35 @@ LinksStack.navigationOptions = {
   ),
 }
 
-const SettingsStack = createStackNavigator({
-  Menu: MenuScreen,
-  navigationOptions: {
-    headerTitle: 'メニュー',
-    headerStyle: {
-      backgroundColor: colors.primaryBlue,
+const Menu = {
+  screen: createStackNavigator({
+    Menu: {
+      screen: MenuScreen,
+      navigationOptions: {
+        headerTitle: 'メニュー',
+        headerStyle: {
+          backgroundColor: colors.primaryBlue,
+        },
+        headerTitleStyle: {
+          color: colors.white,
+        },
+      },
     },
-    headerTitleStyle: {
-      color: colors.white,
-    },
-  },
-})
-
-SettingsStack.navigationOptions = {
-  tabBarLabel: 'Settings',
-  tabBarIcon: ({ focused }) => (
-    <TabBarIcon
-      focused={focused}
-      name={Platform.OS === 'ios' ? 'ios-options' : 'md-options'}
-    />
-  ),
+  }),
+  navigationOptions: ({ navigation }) => ({
+    tabBarLabel: 'Settings',
+    tabBarIcon: ({ focused }) => (
+      <TabBarIcon
+        focused={focused}
+        name={Platform.OS === 'ios' ? 'ios-options' : 'md-options'}
+      />
+    ),
+    tabBarVisible: getCurrentRouteName(navigation.state) !== 'WebView'
+  }),
 }
 
 export default createBottomTabNavigator({
   HomeStack,
   LinksStack,
-  SettingsStack,
+  Menu,
 })

@@ -1,16 +1,18 @@
 import React from 'react'
 import { Icon } from 'expo'
 
-import Colors from '../constants/Colors'
+import { colors } from '../constants'
 
 export default class TabBarIcon extends React.Component {
   render() {
+    const { name, focused } = this.props
+
     return (
       <Icon.Ionicons
-        name={this.props.name}
-        size={26}
+        name={name}
+        size={22}
         style={{ marginBottom: -3 }}
-        color={this.props.focused ? Colors.tabIconSelected : Colors.tabIconDefault}
+        color={focused ? colors.tabIconSelected : colors.tabIconDefault}
       />
     )
   }

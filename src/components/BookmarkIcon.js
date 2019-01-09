@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import { View, StyleSheet } from 'react-native'
-import { colors } from '../config'
+import { colors } from '../constants'
 
 export default class ArticleCard extends Component {
   onPress() {

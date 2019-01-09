@@ -2,7 +2,7 @@ import React, { Component } from 'react'
 import { Text, StyleSheet } from 'react-native'
 import { Body, ListItem, Thumbnail } from 'native-base'
 import { withNavigation } from 'react-navigation'
-import { colors } from '../config'
+import { colors } from '../constants'
 
 class ArticleCard extends Component {
   onPressItem() {

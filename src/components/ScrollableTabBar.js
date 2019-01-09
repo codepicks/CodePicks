@@ -9,7 +9,7 @@ import {
   StyleSheet,
   Platform,
 } from 'react-native'
-import { colors } from '../config'
+import { colors } from '../constants'
 
 const WINDOW_WIDTH = Dimensions.get('window').width
 
