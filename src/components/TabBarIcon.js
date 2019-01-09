@@ -5,10 +5,11 @@ import { colors } from '../constants'
 
 export default class TabBarIcon extends React.Component {
   render() {
-    const { name, focused } = this.props
+    const { type, name, focused } = this.props
+    const IconComponent = Icon[type || 'Ionicons']
 
     return (
-      <Icon.Ionicons
+      <IconComponent
         name={name}
         size={22}
         style={{ marginBottom: -3 }}
