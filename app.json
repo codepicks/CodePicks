@@ -24,6 +24,9 @@
     ],
     "ios": {
       "supportsTablet": true
+    },
+    "extra": {
+      "ga": "UA-131004439-4"
     }
   }
 }

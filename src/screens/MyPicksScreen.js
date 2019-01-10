@@ -11,10 +11,10 @@ class MyPicksScreen extends Component {
           <Text style={styles.text}>CodePicksはオープンソースです。</Text>
           <Text style={styles.text}>「マイピックス」をはじめ色々な機能を追加していきますが、</Text>
           <Text
-            onPress={() => Linking.openURL('https://github.com/codepicks/codepicks')}
+            onPress={() => Linking.openURL('https://github.com/KangYoosam/CodePicks')}
             style={styles.link}
           >
-            https://github.com/codepicks/codepicks
+            https://github.com/KangYoosam/CodePicks
           </Text>
           <Text style={styles.text}>こちらにContributeしていただければ幸いです。</Text>
         </View>

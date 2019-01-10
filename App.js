@@ -1,17 +1,27 @@
 import React from 'react'
 import {
-  Platform, StatusBar,
+  Platform,
+  StatusBar,
 } from 'react-native'
 import {
-  AppLoading, Asset, Font, Icon,
+  AppLoading,
+  Asset,
+  Constants,
 } from 'expo'
 import { Provider } from 'react-redux'
 import store from './src/store'
 import AppNavigator from './src/navigation/AppNavigator'
+import Analytics from './src/services/googleAnalytics'
 
 export default class App extends React.Component {
   state = {
     isLoadingComplete: false,
+  }
+
+  constructor(props) {
+    super(props)
+
+    Analytics.init(Constants.deviceId)
   }
 
   loadResourcesAsync = async () => Promise.all([
@@ -19,13 +29,6 @@ export default class App extends React.Component {
       require('./src/assets/images/robot-dev.png'),
       require('./src/assets/images/robot-prod.png'),
     ]),
-    Font.loadAsync({
-      // This is the font that we are using for our tab bar
-      ...Icon.Ionicons.font,
-      // We include SpaceMono because we use it in HomeScreen.js. Feel free
-      // to remove this if you are not using it in your app
-      'space-mono': require('./src/assets/fonts/SpaceMono-Regular.ttf'),
-    }),
   ])
 
   handleLoadingError = (error) => {
@@ -54,7 +57,11 @@ export default class App extends React.Component {
     return (
       <Provider store={store}>
         {Platform.OS === 'ios' && <StatusBar barStyle="default" />}
-        <AppNavigator />
+        <AppNavigator
+          onNavigationStateChange={(prevState, currentState) => {
+            Analytics.screenHit(prevState, currentState)
+          }}
+        />
       </Provider>
     )
   }
