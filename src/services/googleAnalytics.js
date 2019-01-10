@@ -4,7 +4,10 @@ import {
   Event,
   ScreenHit,
 } from 'expo-analytics'
-import { getCurrentRouteName } from '../utils'
+import {
+  getCurrentRouteName,
+  getCurrentRouteParams,
+} from '../utils'
 
 class Analytics {
   constructor(code = null) {
@@ -23,6 +26,18 @@ class Analytics {
     const prevScreen = getCurrentRouteName(prevState)
 
     if (prevScreen === currentScreen) return
+
+    const params = getCurrentRouteParams(currentState)
+    if (typeof params === 'object') {
+      const { source_url, category } = params
+
+      if (category) {
+        this.ga.addCustomDimension('Category', category);
+      }
+      if (source_url) {
+        this.ga.addCustomDimension('URL', source_url);
+      }
+    }
 
     this.ga.hit(new ScreenHit(currentScreen))
   }
