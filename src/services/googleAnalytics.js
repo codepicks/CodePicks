@@ -32,10 +32,10 @@ class Analytics {
       const { source_url, category } = params
 
       if (category) {
-        this.ga.addCustomDimension('Category', category);
+        this.ga.addCustomDimension(1, category)
       }
       if (source_url) {
-        this.ga.addCustomDimension('URL', source_url);
+        this.ga.addCustomDimension(2, source_url)
       }
     }
 
@@ -47,16 +47,16 @@ class Analytics {
       const params = [category, action]
 
       if (label) {
-        params[2] = label;
+        params[2] = label
 
         if (value >= 0) {
-          params[3] = value;
+          params[3] = value
         }
       }
 
-      this.ga.event(new Event(...params));
+      this.ga.event(new Event(...params))
     }
   }
 }
 
-export default new Analytics(Constants.manifest.extra.ga);
+export default new Analytics(Constants.manifest.extra.ga)
