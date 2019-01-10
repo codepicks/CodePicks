@@ -1,9 +1,9 @@
-import { Constants } from 'expo'
 import {
   Analytics as GoogleAnalytics,
   Event,
   ScreenHit,
 } from 'expo-analytics'
+import { GOOGLE_ANALYTICS_UID } from 'react-native-dotenv'
 import {
   getCurrentRouteName,
   getCurrentRouteParams,
@@ -59,4 +59,4 @@ class Analytics {
   }
 }
 
-export default new Analytics(Constants.manifest.extra.ga)
+export default new Analytics(GOOGLE_ANALYTICS_UID)
