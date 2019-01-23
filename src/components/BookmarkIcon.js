@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
-import { View, StyleSheet } from 'react-native'
+import { StyleSheet } from 'react-native'
+import { Icon } from 'react-native-elements'
 import { colors } from '../constants'
 
 export default class ArticleCard extends Component {
@@ -11,14 +12,13 @@ export default class ArticleCard extends Component {
     const { containerStyle } = this.props
 
     return (
-      <View />
-      // <Icon
-      //   type='font-awesome'
-      //   name="bookmark-o"
-      //   containerStyle={[styles.container, containerStyle]}
-      //   iconStyle={styles.icon}
-      //   onPress={() => onPress()}
-      // />
+      <Icon
+        type='font-awesome'
+        name="bookmark-o"
+        containerStyle={[styles.container, containerStyle]}
+        iconStyle={styles.icon}
+        onPress={() => this.onPress()}
+      />
     )
   }
 }
