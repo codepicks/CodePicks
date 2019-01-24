@@ -9,10 +9,28 @@ import {
 } from 'react-native'
 import { connect } from 'react-redux'
 import Modal from 'react-native-modal'
-import { articlesFetch } from '../actions'
+import { articlesPick } from '../actions'
 import { colors } from '../constants'
 
 class PickFormModal extends Component {
+  constructor(props) {
+    super(props)
+
+    this.state = {
+      text: '',
+    }
+  }
+
+  onPressSubmit() {
+    const { text } = this.state
+
+    // eslint-disable-next-line
+    this.props.articlesPick({
+      hash: 'uFBUcyCB3fSboYTheMLK9HOwGwgQZrog',
+      text,
+    })
+  }
+
   render() {
     return (
       <Modal {...this.props} style={styles.container}>
@@ -31,11 +49,11 @@ class PickFormModal extends Component {
             <TextInput
               style={styles.textInput}
               placeholder="コメントを書く（任意）"
-              onChangeText={text => console.log(text)}
+              onChangeText={text => this.setState({ text })}
             />
           </View>
           <View style={styles.submitButtonContainer}>
-            <TouchableOpacity style={styles.submitButton}>
+            <TouchableOpacity style={styles.submitButton} onPress={() => this.onPressSubmit()}>
               <Text style={styles.submitButtonText}>Pickする</Text>
             </TouchableOpacity>
           </View>
@@ -102,5 +120,5 @@ const styles = StyleSheet.create({
 })
 
 export default connect(null, {
-  articlesFetch,
+  articlesPick,
 })(PickFormModal)
