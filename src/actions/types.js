@@ -1,3 +1,6 @@
 // Articles
-// eslint-disable-next-line
 export const ARTICLES_FETCH_SUCCESS = 'ARTICLES_FETCH_SUCCESS'
+
+// User
+export const USER_SET_TOKEN = 'USER_SET_TOKEN'
+export const USER_REGISTER_FAILED = 'USER_REGISTER_FAILED'

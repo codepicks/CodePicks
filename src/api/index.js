@@ -1,12 +1,24 @@
-// import { API_HOST, API_ENTRY_POINT } from 'react-native-dotenv'
+import { API_HOST, API_ENTRY_POINT } from 'react-native-dotenv'
 import axios from 'axios'
 
-const API_HOST = 'https://codepicks.jp'
-const API_ENTRY_POINT = '/api/v1'
+console.log(API_HOST)
 
 const BASE_URL = `${API_HOST}${API_ENTRY_POINT}`
 
-// eslint-disable-next-line
-export const api = path => {
-  return axios(`${BASE_URL}/${path}`)
+export const _api = (path, params) => {
+  return axios(`${BASE_URL}/${path}`, params)
+}
+
+export const get = (path, params) => {
+  return _api(path, {
+    method: 'GET',
+    data: params,
+  })
+}
+
+export const post = (path, params) => {
+  return _api(path, {
+    method: 'POST',
+    data: params,
+  })
 }

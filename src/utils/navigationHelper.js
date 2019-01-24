@@ -1,3 +1,5 @@
+import { StackActions, NavigationActions } from 'react-navigation'
+
 export const getCurrentRouteName = navigationState => {
   if (!navigationState) {
     return null
@@ -20,4 +22,13 @@ export const getCurrentRouteParams = navigationState => {
     return getCurrentRouteParams(route)
   }
   return route.params
+}
+
+export const navigateWithReset = (routeName, navigation) => {
+  const resetAction = StackActions.reset({
+    index: 0,
+    key: null,
+    actions: [NavigationActions.navigate({ routeName })],
+  })
+  navigation.dispatch(resetAction)
 }

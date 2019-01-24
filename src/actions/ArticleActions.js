@@ -1,11 +1,11 @@
 import {
   ARTICLES_FETCH_SUCCESS,
 } from './types'
-import { api } from '../api'
+import { get } from '../api'
 
 // eslint-disable-next-line
 export const articlesFetch = category => {
-  return dispatch => api(`categories/${category}/articles`)
+  return dispatch => get(`categories/${category}/articles`)
     .then(({ data }) => {
       return dispatch({
         category,

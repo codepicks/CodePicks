@@ -16,6 +16,12 @@
       "resizeMode": "contain",
       "backgroundColor": "#ffffff"
     },
+    "extra": {
+      "twitter": {
+        "consumerKey": "sIaBRZBbihUabSRkENZUjWL2e",
+        "consumerKeySecret": "u6qePkEENXuI5zttzFMYzIL335JBAGq38kpF8FGzptVgBt1CvB"
+      }
+    },
     "updates": {
       "fallbackToCacheTimeout": 0
     },

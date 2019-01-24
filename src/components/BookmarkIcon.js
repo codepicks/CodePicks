@@ -4,12 +4,29 @@ import { Icon } from 'react-native-elements'
 import { colors } from '../constants'
 
 export default class ArticleCard extends Component {
+  constructor(props) {
+    super(props)
+
+    this.state = {
+      isVisible: false,
+    }
+  }
+
+  componentWillMount() {
+
+  }
+
   onPress() {
     console.log('bookmarked')
   }
 
   render() {
     const { containerStyle } = this.props
+    const { isVisible } = this.state
+
+    if (!isVisible) {
+      return null
+    }
 
     return (
       <Icon
