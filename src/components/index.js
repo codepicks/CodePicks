@@ -4,6 +4,8 @@ export { default as ViewContainer } from './ViewContainer'
 export { default as MenuFooterAd } from './MenuFooterAd'
 export { default as TabBarIcon } from './TabBarIcon'
 export { default as PickFormModal } from './PickFormModal'
+export { default as BackIcon } from './BackIcon'
+export { default as PickingArticle } from './PickingArticle'
 
 // Article
 export { default as ArticleList } from './ArticleList'

@@ -3,11 +3,15 @@ import { createStackNavigator, createBottomTabNavigator } from 'react-navigation
 import { TabBarIcon } from '../components'
 import {
   WebViewScreen,
+  BridgeViewScreen,
   ArticleListScreen,
   MyPicksScreen,
   MenuScreen,
 } from '../screens'
-import { WebViewNavigationOptions } from '../navigationOptions'
+import {
+  WebViewNavigationOptions,
+  BridgeViewNavigationOptions,
+} from '../navigationOptions'
 import { colors } from '../constants'
 import { getCurrentRouteName } from '../utils'
 
@@ -15,6 +19,10 @@ const sharedRoutes = {
   WebView: {
     screen: WebViewScreen,
     navigationOptions: ({ navigation }) => WebViewNavigationOptions(navigation),
+  },
+  BridgeView: {
+    screen: BridgeViewScreen,
+    navigationOptions: ({ navigation }) => BridgeViewNavigationOptions(navigation),
   },
 }
 

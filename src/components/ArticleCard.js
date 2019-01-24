@@ -7,13 +7,10 @@ import PickIcon from './PickIcon'
 
 class ArticleCard extends Component {
   onPressItem() {
-    const { navigation, article, category } = this.props
+    const { navigation, article } = this.props
 
-    navigation.navigate('WebView', {
+    navigation.navigate('BridgeView', {
       article,
-      category,
-      title: article.title,
-      source_url: article.source_url,
     })
   }
 

@@ -8,7 +8,7 @@ import { colors } from '../constants'
 class ThumbnailCard extends Component {
   render() {
     const {
-      title, image, downsideTitle, renderUpperTitle, onPressItem,
+      title, image, downsideTitle, onPressItem,
     } = this.props
 
     return (
@@ -23,7 +23,6 @@ class ThumbnailCard extends Component {
             source={{ uri: image }}
           />
           <View style={styles.textContainer}>
-            {renderUpperTitle ? renderUpperTitle() : undefined}
             <Text style={styles.title}>
               {title}
             </Text>

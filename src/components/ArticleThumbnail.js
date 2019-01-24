@@ -6,10 +6,8 @@ class ArticleThumbnail extends Component {
   onPressItem() {
     const { navigation, article } = this.props
 
-    navigation.navigate('WebView', {
+    navigation.navigate('BridgeView', {
       article,
-      title: article.title,
-      source_url: article.source_url,
     })
   }
 

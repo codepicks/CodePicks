@@ -17,7 +17,6 @@ class AuthLoadingScreen extends Component {
 
   bootstrapAsync = async () => {
     const token = await AsyncStorage.getItem('token')
-    console.log(token)
 
     this.props.authSetToken(token)
     navigateWithReset('ArticleList', this.props.navigation)

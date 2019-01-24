@@ -8,3 +8,4 @@ export { default as MenuScreen } from './MenuScreen'
 
 // Sub Screens
 export { default as WebViewScreen } from './WebViewScreen'
+export { default as BridgeViewScreen } from './BridgeViewScreen'

@@ -1,6 +1,5 @@
 import React from 'react'
 import {
-  Platform,
   TouchableOpacity,
   Share,
   StyleSheet,
@@ -11,10 +10,9 @@ import {
   Icon,
   Left,
   Right,
-  Title,
 } from 'native-base'
-import { colors } from '../constants'
 import { BackIcon } from '../components'
+import { colors } from '../constants'
 
 export default navigation => ({
   header: () => {
@@ -31,34 +29,7 @@ export default navigation => ({
         <Left>
           <BackIcon />
         </Left>
-        <Body
-          style={[Platform.select({
-            ios: {
-              paddingTop: 5,
-            },
-            android: {
-              marginTop: -3,
-              marginLeft: 20,
-            },
-          }),
-          {
-            flex: 5,
-            justifyContent: 'center',
-            alignItems: 'center',
-          }]}
-        >
-          <Title
-            style={{
-              color: colors.white,
-              fontSize: 15,
-              fontFamily: 'HiraginoSans-W6',
-              fontWeight: 'bold',
-              textAlign: 'center',
-            }}
-          >
-            {title}
-          </Title>
-        </Body>
+        <Body />
         <Right>
           <TouchableOpacity
             onPress={() => Share.share({
