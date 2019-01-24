@@ -3,7 +3,7 @@ import { Text, StyleSheet } from 'react-native'
 import { Body, ListItem, Thumbnail, Right } from 'native-base'
 import { withNavigation } from 'react-navigation'
 import { colors } from '../constants'
-import BookmarkIcon from './BookmarkIcon'
+import PickIcon from './PickIcon'
 
 class ArticleCard extends Component {
   onPressItem() {
@@ -43,7 +43,7 @@ class ArticleCard extends Component {
           </Text>
         </Body>
         <Right>
-          <BookmarkIcon />
+          <PickIcon />
         </Right>
       </ListItem>
     )

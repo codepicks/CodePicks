@@ -1,7 +1,12 @@
 import React from 'react'
 import { createStackNavigator, createBottomTabNavigator } from 'react-navigation'
 import { TabBarIcon } from '../components'
-import { WebViewScreen, ArticleListScreen, MyPicksScreen, MenuScreen } from '../screens'
+import {
+  WebViewScreen,
+  ArticleListScreen,
+  MyPicksScreen,
+  MenuScreen,
+} from '../screens'
 import { WebViewNavigationOptions } from '../navigationOptions'
 import { colors } from '../constants'
 import { getCurrentRouteName } from '../utils'
@@ -41,8 +46,8 @@ const ArticleList = {
 const MyPicks = {
   screen: createStackNavigator({
     MyPicks: {
-      screen: MyPicksScreen
-    }
+      screen: MyPicksScreen,
+    },
   }, {
     headerMode: 'none',
   }),
