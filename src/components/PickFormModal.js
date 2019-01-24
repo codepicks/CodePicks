@@ -9,7 +9,7 @@ import {
 } from 'react-native'
 import { connect } from 'react-redux'
 import Modal from 'react-native-modal'
-import { articlesPick } from '../actions'
+import { pickAriticlePost } from '../actions'
 import { colors } from '../constants'
 
 class PickFormModal extends Component {
@@ -22,11 +22,9 @@ class PickFormModal extends Component {
     }
   }
 
-  componentWillReceiveProps(nextProps) {
-    const { isVisible } = nextProps
-
+  componentWillReceiveProps({ isVisible, pick }) {
     this.setState({
-      isVisible,
+      isVisible: pick !== null || isVisible,
     })
   }
 
@@ -35,7 +33,7 @@ class PickFormModal extends Component {
     const { pick } = this.props
 
     // eslint-disable-next-line
-    this.props.articlesPick({
+    this.props.pickAriticlePost({
       hash: pick.hash,
       text,
     })
@@ -143,5 +141,5 @@ const StateToProps = ({ pick }) => {
 }
 
 export default connect(StateToProps, {
-  articlesPick,
+  pickAriticlePost,
 })(PickFormModal)

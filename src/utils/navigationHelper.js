@@ -1,7 +1,6 @@
 import { StackActions, NavigationActions } from 'react-navigation'
 
 export const getCurrentRouteName = navigationState => {
-  console.log(navigationState)
   if (!navigationState) {
     return null
   }

@@ -2,8 +2,6 @@ import { AsyncStorage } from 'react-native'
 import { API_HOST, API_ENTRY_POINT } from 'react-native-dotenv'
 import axios from 'axios'
 
-console.log(API_HOST)
-
 const BASE_URL = `${API_HOST}${API_ENTRY_POINT}`
 
 export const api = async (path, params) => {

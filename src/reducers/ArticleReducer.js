@@ -1,6 +1,5 @@
 import {
   ARTICLES_FETCH_SUCCESS,
-  ARTICLES_PICK_SUCCESS,
 } from '../actions/types'
 
 const INITIAL_STATE = {}
@@ -12,8 +11,6 @@ export default (state = INITIAL_STATE, action) => {
         ...state,
         [action.category]: action.payload,
       }
-    case ARTICLES_PICK_SUCCESS:
-      return state
     default:
       return state
   }
