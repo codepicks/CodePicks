@@ -17,32 +17,50 @@ class PickFormModal extends Component {
     super(props)
 
     this.state = {
+      isVisible: props.isVisible,
       text: '',
     }
   }
 
+  componentWillReceiveProps(nextProps) {
+    const { isVisible } = nextProps
+
+    this.setState({
+      isVisible,
+    })
+  }
+
   onPressSubmit() {
     const { text } = this.state
+    const { pick } = this.props
 
     // eslint-disable-next-line
     this.props.articlesPick({
-      hash: 'uFBUcyCB3fSboYTheMLK9HOwGwgQZrog',
+      hash: pick.hash,
       text,
     })
   }
 
   render() {
+    const { pick } = this.props
+    const { isVisible } = this.state
+    if (!pick) return null
+
     return (
-      <Modal {...this.props} style={styles.container}>
+      <Modal
+        isVisible={isVisible}
+        onBackdropPress={() => this.setState({ isVisible: false })}
+        style={styles.container}
+      >
         <View style={styles.inner}>
           <View style={styles.articleContainer}>
             <Image
-              source={{ uri: 'https://pbs.twimg.com/profile_images/1068575392011669505/XQPJnreV_normal.jpg' }}
+              source={{ uri: pick.image }}
               style={styles.articleImage}
             />
             <View style={styles.articleInfo}>
-              <Text style={styles.articleTitle}>タイトルタイトルタイトル</Text>
-              <Text style={styles.articleSource}>www.itmedia.com</Text>
+              <Text style={styles.articleTitle}>{pick.title}</Text>
+              <Text style={styles.articleSource}>{pick.source}</Text>
             </View>
           </View>
           <View style={styles.textInputContainer}>
@@ -66,7 +84,6 @@ class PickFormModal extends Component {
 const styles = StyleSheet.create({
   container: {
     margin: 0,
-    height: '60%',
     justifyContent: 'flex-end',
   },
   inner: {
@@ -119,6 +136,12 @@ const styles = StyleSheet.create({
   },
 })
 
-export default connect(null, {
+const StateToProps = ({ pick }) => {
+  return {
+    pick,
+  }
+}
+
+export default connect(StateToProps, {
   articlesPick,
 })(PickFormModal)

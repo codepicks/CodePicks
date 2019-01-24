@@ -4,6 +4,7 @@ import { Icon } from 'react-native-elements'
 import { withNavigation } from 'react-navigation'
 import { connect } from 'react-redux'
 import { colors } from '../constants'
+import { pickArticleSelect } from '../actions'
 import PickFormModal from './PickFormModal'
 
 class PickIcon extends Component {
@@ -26,7 +27,11 @@ class PickIcon extends Component {
   }
 
   onPress() {
+    const { article } = this.props
     const { showModal } = this.state
+
+    // eslint-disable-next-line
+    this.props.pickArticleSelect(article)
 
     this.setState({
       showModal: !showModal,
@@ -76,4 +81,6 @@ const StateToProps = ({ auth }) => {
   }
 }
 
-export default connect(StateToProps)(withNavigation(PickIcon))
+export default connect(StateToProps, {
+  pickArticleSelect,
+})(withNavigation(PickIcon))

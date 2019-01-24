@@ -43,7 +43,7 @@ class ArticleCard extends Component {
           </Text>
         </Body>
         <Right>
-          <PickIcon />
+          <PickIcon article={article} />
         </Right>
       </ListItem>
     )

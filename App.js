@@ -17,6 +17,7 @@ import Analytics from './src/services/googleAnalytics'
 export default class App extends React.Component {
   constructor(props) {
     super(props)
+
     this.state = {
       isLoadingComplete: false,
     }
@@ -29,12 +30,10 @@ export default class App extends React.Component {
       require('./assets/images/robot-dev.png'),
       require('./assets/images/robot-prod.png'),
     ]),
-    twitter.setConsumerKey(Constants.manifest.extra.twitter.consumerKey, Constants.manifest.extra.twitter.consumerKeySecret)
+    twitter.setConsumerKey(Constants.manifest.extra.twitter.consumerKey, Constants.manifest.extra.twitter.consumerKeySecret),
   ])
 
-  handleLoadingError = (error) => {
-    // In this case, you might want to report the error to your error
-    // reporting service, for example Sentry
+  handleLoadingError = error => {
     console.warn(error)
   }
 
