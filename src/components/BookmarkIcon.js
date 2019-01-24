@@ -1,9 +1,10 @@
 import React, { Component } from 'react'
 import { StyleSheet } from 'react-native'
 import { Icon } from 'react-native-elements'
+import { connect } from 'react-redux'
 import { colors } from '../constants'
 
-export default class ArticleCard extends Component {
+class BookMarkIcon extends Component {
   constructor(props) {
     super(props)
 
@@ -13,11 +14,14 @@ export default class ArticleCard extends Component {
   }
 
   componentWillMount() {
-
+    if (this.props.auth.token) {
+      this.setState({
+        isVisible: true
+      })
+    }
   }
 
   onPress() {
-    console.log('bookmarked')
   }
 
   render() {
@@ -51,3 +55,11 @@ const styles = StyleSheet.create({
     color: colors.fontLightGray,
   },
 })
+
+const StateToProps = ({ auth }) => {
+  return {
+    auth,
+  }
+}
+
+export default connect(StateToProps)(BookMarkIcon)
