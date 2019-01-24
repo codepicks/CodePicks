@@ -28,7 +28,7 @@ const ArticleList = {
     },
     ...sharedRoutes,
   }),
-  navigationOptions: navigation => ({
+  navigationOptions: ({ navigation }) => ({
     title: 'エントリー',
     tabBarIcon: ({ focused }) => {
       return (
@@ -89,7 +89,7 @@ const Menu = {
         name="menu"
       />
     ),
-    tabBarVisible: getCurrentRouteName(navigation.state) !== 'WebView'
+    tabBarVisible: getCurrentRouteName(navigation.state) !== 'WebView',
   }),
 }
 

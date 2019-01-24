@@ -7,6 +7,7 @@ class ArticleThumbnail extends Component {
     const { navigation, article } = this.props
 
     navigation.navigate('WebView', {
+      article,
       title: article.title,
       source_url: article.source_url,
     })

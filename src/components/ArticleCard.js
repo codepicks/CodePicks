@@ -10,9 +10,10 @@ class ArticleCard extends Component {
     const { navigation, article, category } = this.props
 
     navigation.navigate('WebView', {
+      article,
+      category,
       title: article.title,
       source_url: article.source_url,
-      category,
     })
   }
 

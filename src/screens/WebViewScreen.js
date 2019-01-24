@@ -5,12 +5,11 @@ import {
   TouchableOpacity,
   StyleSheet,
   LayoutAnimation,
-  Share,
   Platform,
 } from 'react-native'
 import { Footer } from 'native-base'
 import { Icon } from 'react-native-elements'
-import { ViewContainer, BookmarkIcon } from '../components'
+import { ViewContainer, PickIcon } from '../components'
 import { colors } from '../constants'
 
 class WebViewScreen extends Component {
@@ -36,7 +35,7 @@ class WebViewScreen extends Component {
   render() {
     const { navigation } = this.props
 
-    const { title, source_url } = navigation.state.params
+    const { article, source_url } = navigation.state.params
     const { hasPrevious, hasNext } = this.state
 
     return (
@@ -73,24 +72,10 @@ class WebViewScreen extends Component {
           </View>
           <View style={styles.footerRight}>
             <View style={styles.rightButtonsContainer}>
-              <TouchableOpacity
-                onPress={() => Share.share({
-                  url: source_url,
-                  message: title,
-                  title,
-                  subject: '【1D News】ニュースの共有',
-                })
-                  .catch(err => console.log(err))
-                }
-                style={styles.footerShareIcon}
-              >
-                <Icon
-                  type="entypo"
-                  name="share-alternative"
-                  size={20}
-                />
-              </TouchableOpacity>
-              <BookmarkIcon containerStyle={styles.bookmarkIcon} />
+              <PickIcon
+                containerStyle={styles.pickIcon}
+                article={article}
+              />
             </View>
           </View>
         </Footer>
@@ -132,13 +117,7 @@ const styles = StyleSheet.create({
     alignItems: 'flex-end',
     justifyContent: 'flex-end',
   },
-  footerShareIcon: {
-    flex: 3,
-    flexDirection: 'row',
-    justifyContent: 'flex-end',
-    marginRight: 30,
-  },
-  bookmarkIcon: {
+  pickIcon: {
     flex: 1,
     flexDirection: 'row',
     justifyContent: 'flex-end',
