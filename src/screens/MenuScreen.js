@@ -25,21 +25,19 @@ class MenuScreen extends React.Component {
           text: 'OK',
           onPress: () => {
             // redirect?
-          }
-        }
-      ]
+          },
+        },
+      ],
     )
   }
 
-  openWebView({ title, source_url, event }) {
+  openWebView({ title, source_url }) {
     const { navigation } = this.props
 
     navigation.navigate('WebView', {
       title,
       source_url,
     })
-
-    // tracker.trackEvent(event, 'Click')
   }
 
   render() {

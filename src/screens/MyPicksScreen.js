@@ -1,5 +1,10 @@
 import React, { Component } from 'react'
-import { View, StyleSheet, Text, Linking } from 'react-native'
+import {
+  View,
+  StyleSheet,
+  Text,
+  Linking,
+} from 'react-native'
 import { ViewContainer } from '../components'
 
 class MyPicksScreen extends Component {
@@ -24,7 +29,7 @@ class MyPicksScreen extends Component {
 }
 
 MyPicksScreen.navigationOptions = () => ({
-  title: 'マイピックス'
+  title: 'マイピックス',
 })
 
 const styles = StyleSheet.create({
