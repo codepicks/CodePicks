@@ -1,34 +1,14 @@
 import React from 'react'
-import { LayoutAnimation, StyleSheet, Alert } from 'react-native'
+import { LayoutAnimation, StyleSheet } from 'react-native'
 import {
   List, ListItem, Text, Left, Right,
 } from 'native-base'
-import { connect } from 'react-redux'
 import { Entypo } from '@expo/vector-icons'
-import { TWLoginButton } from 'react-native-simple-twitter'
-import { authRegister } from '../actions'
-import { ViewContainer } from '../components'
+import { ViewContainer, TwitterLoginButton } from '../components'
 
-class MenuScreen extends React.Component {
+export default class MenuScreen extends React.Component {
   componentWillUpdate() {
     LayoutAnimation.easeInEaseOut()
-  }
-
-  onSuccess = user => {
-    this.props.authRegister(user)
-
-    Alert.alert(
-      'Success',
-      'ログインできました',
-      [
-        {
-          text: 'OK',
-          onPress: () => {
-            // redirect?
-          },
-        },
-      ],
-    )
   }
 
   openWebView({ title, source_url }) {
@@ -43,14 +23,7 @@ class MenuScreen extends React.Component {
   render() {
     return (
       <ViewContainer noPadding white>
-        <TWLoginButton
-          style={{ width: '100%', height: 60 }}
-          onSuccess={this.onSuccess}
-        >
-          <Text style={{ textAlign: 'center', color: 'black' }}>
-            Twitterでログインする
-          </Text>
-        </TWLoginButton>
+        <TwitterLoginButton />
         <List>
           <ListItem
             noIndent
@@ -143,13 +116,3 @@ const styles = StyleSheet.create({
     height: 50,
   },
 })
-
-const StateToProps = ({ auth }) => {
-  return {
-    auth,
-  }
-}
-
-export default connect(StateToProps, {
-  authRegister,
-})(MenuScreen)

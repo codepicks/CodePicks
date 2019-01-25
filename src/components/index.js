@@ -6,6 +6,8 @@ export { default as PickFormModal } from './PickFormModal'
 export { default as BackIcon } from './BackIcon'
 export { default as PickingArticle } from './PickingArticle'
 export { default as CommentItem } from './CommentItem'
+export { default as TwitterLoginButton } from './TwitterLoginButton'
+export { default as ShareIcon } from './ShareIcon'
 
 // Article
 export { default as ArticleList } from './ArticleList'

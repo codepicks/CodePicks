@@ -1,22 +1,16 @@
 import React from 'react'
 import {
-  TouchableOpacity,
-  Share,
-  StyleSheet,
-} from 'react-native'
-import {
   Body,
   Header,
-  Icon,
   Left,
   Right,
 } from 'native-base'
-import { BackIcon } from '../components'
+import { BackIcon, ShareIcon } from '../components'
 import { colors } from '../constants'
 
 export default navigation => ({
   header: () => {
-    const { title, source_url } = navigation.state.params
+    const { article } = navigation.state.params
 
     return (
       <Header
@@ -31,31 +25,14 @@ export default navigation => ({
         </Left>
         <Body />
         <Right>
-          <TouchableOpacity
-            onPress={() => Share.share({
-              url: source_url,
-              message: title,
-              title,
-              subject: '【CodePicks】ニュースの共有',
-            })
-              .catch(err => console.log(err))
-            }
-          >
-            <Icon
-              type="Entypo"
-              name="share-alternative"
-              style={styles.shareIcon}
-            />
-          </TouchableOpacity>
+          <ShareIcon
+            url={article.source_url}
+            message={article.title}
+            title={article.title}
+            subject="【CodePicks】ニュースの共有"
+          />
         </Right>
       </Header>
     )
-  },
-})
-
-const styles = StyleSheet.create({
-  shareIcon: {
-    color: colors.white,
-    fontSize: 20,
   },
 })

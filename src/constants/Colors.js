@@ -18,4 +18,5 @@ export default {
   fontGray: '#4D4D4D',
   fontLightGray: '#B9BABF',
   primaryBlue: '#152F70',
+  twitter: '#1dcaff',
 }
