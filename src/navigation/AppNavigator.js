@@ -1,3 +1,4 @@
+// eslint-disable-next-line
 import React from 'react'
 import { createAppContainer, createSwitchNavigator } from 'react-navigation'
 
@@ -11,5 +12,5 @@ export default createAppContainer(createSwitchNavigator(
   },
   {
     initialRouteName: 'AuthLoading',
-  }
+  },
 ))

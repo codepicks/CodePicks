@@ -2,7 +2,7 @@ import { AsyncStorage } from 'react-native'
 import { API_HOST, API_ENTRY_POINT } from 'react-native-dotenv'
 import axios from 'axios'
 
-const BASE_URL = `${API_HOST}${API_ENTRY_POINT}`
+const BASE_URL = `${'https://codepicks.jp'}${API_ENTRY_POINT}`
 
 export const api = async (path, params) => {
   const token = await AsyncStorage.getItem('token')

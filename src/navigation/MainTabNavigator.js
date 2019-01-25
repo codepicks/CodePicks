@@ -62,7 +62,7 @@ const MyPicks = {
   navigationOptions: {
     title: 'マイピックス',
     tabBarIcon: ({ focused }) => {
-      return(
+      return (
         <TabBarIcon
           focused={focused}
           type="FontAwesome"

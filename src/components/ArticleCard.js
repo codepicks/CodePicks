@@ -1,7 +1,13 @@
 import React, { Component } from 'react'
 import { Text, StyleSheet } from 'react-native'
-import { Body, ListItem, Thumbnail, Right } from 'native-base'
+import {
+  Body,
+  ListItem,
+  Thumbnail,
+  Right,
+} from 'native-base'
 import { withNavigation } from 'react-navigation'
+import { connect } from 'react-redux'
 import { colors } from '../constants'
 import PickIcon from './PickIcon'
 
@@ -12,6 +18,17 @@ class ArticleCard extends Component {
     navigation.navigate('BridgeView', {
       article,
     })
+  }
+
+  renderRight() {
+    const { auth, article } = this.props
+
+    if (!auth.token) return null
+    return (
+      <Right>
+        <PickIcon article={article} />
+      </Right>
+    )
   }
 
   render() {
@@ -37,12 +54,12 @@ class ArticleCard extends Component {
             {title}
           </Text>
           <Text style={styles.relativeTime}>
-            {source} | {created_at}
+            {source}
+            |
+            {created_at}
           </Text>
         </Body>
-        <Right>
-          <PickIcon article={article} />
-        </Right>
+        {this.renderRight()}
       </ListItem>
     )
   }
@@ -70,4 +87,10 @@ const styles = StyleSheet.create({
   },
 })
 
-export default withNavigation(ArticleCard)
+const StateToProps = ({ auth }) => {
+  return {
+    auth,
+  }
+}
+
+export default connect(StateToProps)(withNavigation(ArticleCard))
