@@ -32,7 +32,8 @@
     "arrow-parens": [
       "error", "as-needed"
     ],
-    "react/jsx-no-bind": 0
+    "react/jsx-no-bind": 0,
+    "react/destructuring-assignment": "never"
   },
   "globals": {
     "__DEV__": true

@@ -5,10 +5,19 @@ import {
   StyleSheet,
   TouchableOpacity,
 } from 'react-native'
-import { ViewContainer } from '../components'
+import { connect } from 'react-redux'
+import { commentsFetch } from '../actions'
+import { ViewContainer, CommentItem } from '../components'
 import { colors } from '../constants'
 
 class BridgeViewScreen extends Component {
+  componentWillMount() {
+    const { navigation } = this.props
+    const { article } = navigation.state.params
+
+    this.props.commentsFetch(article.hash)
+  }
+
   onPressNext() {
     const { navigation } = this.props
     const { article } = navigation.state.params
@@ -20,9 +29,17 @@ class BridgeViewScreen extends Component {
     })
   }
 
+  // eslint-disable-next-line
+  renderComments(currentComments) {
+    if (!currentComments) return null
+
+    return currentComments.map(comment => <CommentItem key={comment.hash} item={comment} />)
+  }
+
   render() {
-    const { navigation } = this.props
+    const { navigation, comments } = this.props
     const { article } = navigation.state.params
+    const currentComments = comments[article.hash]
 
     return (
       <ViewContainer>
@@ -35,13 +52,15 @@ class BridgeViewScreen extends Component {
             |
             {article.created_at}
           </Text>
-
           <TouchableOpacity
             style={styles.goNextButton}
             onPress={() => this.onPressNext()}
           >
             <Text style={styles.goNextText}>続きを読む</Text>
           </TouchableOpacity>
+        </View>
+        <View style={styles.picksContainer}>
+          {this.renderComments(currentComments)}
         </View>
       </ViewContainer>
     )
@@ -51,8 +70,9 @@ class BridgeViewScreen extends Component {
 const styles = StyleSheet.create({
   articleContainer: {
     width: '100%',
-    height: 190,
     padding: 20,
+    borderBottomWidth: 4,
+    borderBottomColor: colors.fontGray,
   },
   articleTitle: {
     fontSize: 16,
@@ -77,6 +97,17 @@ const styles = StyleSheet.create({
     textAlign: 'center',
     color: colors.primaryBlue,
   },
+  picksContainer: {
+    flex: 1,
+  },
 })
 
-export default BridgeViewScreen
+const StateToProps = ({ comments }) => {
+  return {
+    comments,
+  }
+}
+
+export default connect(StateToProps, {
+  commentsFetch,
+})(BridgeViewScreen)
