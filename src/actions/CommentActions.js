@@ -1,15 +1,15 @@
 import {
-  ARTICLES_FETCH_SUCCESS,
+  COMMENTS_FETCH_SUCCESS,
 } from './types'
 import { get } from '../api'
 
 // eslint-disable-next-line
-export const articlesFetch = category => {
-  return dispatch => get(`categories/${category}/articles`)
+export const commentsFetch = hash => {
+  return dispatch => get(`articles/${hash}/picks`)
     .then(({ data }) => {
       return dispatch({
-        category,
-        type: ARTICLES_FETCH_SUCCESS,
+        hash,
+        type: COMMENTS_FETCH_SUCCESS,
         payload: data,
       })
     })

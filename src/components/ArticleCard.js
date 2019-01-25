@@ -1,17 +1,16 @@
 import React, { Component } from 'react'
 import { Text, StyleSheet } from 'react-native'
-import { Body, ListItem, Thumbnail } from 'native-base'
+import { Body, ListItem, Thumbnail, Right } from 'native-base'
 import { withNavigation } from 'react-navigation'
 import { colors } from '../constants'
+import PickIcon from './PickIcon'
 
 class ArticleCard extends Component {
   onPressItem() {
-    const { navigation, article, category } = this.props
+    const { navigation, article } = this.props
 
-    navigation.navigate('WebView', {
-      title: article.title,
-      source_url: article.source_url,
-      category,
+    navigation.navigate('BridgeView', {
+      article,
     })
   }
 
@@ -38,12 +37,12 @@ class ArticleCard extends Component {
             {title}
           </Text>
           <Text style={styles.relativeTime}>
-            {source}
-            {' '}
-|
-            {created_at}
+            {source} | {created_at}
           </Text>
         </Body>
+        <Right>
+          <PickIcon article={article} />
+        </Right>
       </ListItem>
     )
   }

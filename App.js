@@ -9,31 +9,31 @@ import {
   Constants,
 } from 'expo'
 import { Provider } from 'react-redux'
+import twitter from 'react-native-simple-twitter'
 import store from './src/store'
 import AppNavigator from './src/navigation/AppNavigator'
 import Analytics from './src/services/googleAnalytics'
 
 export default class App extends React.Component {
-  state = {
-    isLoadingComplete: false,
-  }
-
   constructor(props) {
     super(props)
+
+    this.state = {
+      isLoadingComplete: false,
+    }
 
     Analytics.init(Constants.deviceId)
   }
 
   loadResourcesAsync = async () => Promise.all([
     Asset.loadAsync([
-      require('./src/assets/images/robot-dev.png'),
-      require('./src/assets/images/robot-prod.png'),
+      require('./assets/images/robot-dev.png'),
+      require('./assets/images/robot-prod.png'),
     ]),
+    twitter.setConsumerKey(Constants.manifest.extra.twitter.consumerKey, Constants.manifest.extra.twitter.consumerKeySecret),
   ])
 
-  handleLoadingError = (error) => {
-    // In this case, you might want to report the error to your error
-    // reporting service, for example Sentry
+  handleLoadingError = error => {
     console.warn(error)
   }
 
