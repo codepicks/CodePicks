@@ -105,6 +105,22 @@ export default class MenuScreen extends React.Component {
               <Entypo name="chevron-right" />
             </Right>
           </ListItem>
+          <ListItem
+            noIndent
+            style={styles.listitem}
+            onPress={() => this.openWebView({
+              title: '投稿する(Beta)',
+              source_url: 'https://docs.google.com/forms/d/e/1FAIpQLSckl0WNNwgAqnuxRaDMnPWZ9qHCSBUd_g2Bw6cZGrJW0uRYtA/viewform',
+              event: '投稿する(Beta)',
+            })}
+          >
+            <Left>
+              <Text>投稿する(Beta)</Text>
+            </Left>
+            <Right>
+              <Entypo name="chevron-right" />
+            </Right>
+          </ListItem>
         </List>
       </ViewContainer>
     )
