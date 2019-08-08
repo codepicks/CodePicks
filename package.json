@@ -16,6 +16,8 @@
     "axios": "^0.18.0",
     "expo": "^33.0.0",
     "expo-analytics": "^1.0.7",
+    "expo-asset": "^6.0.0",
+    "expo-constants": "~5.0.1",
     "native-base": "^2.10.0",
     "react": "16.8.3",
     "react-native": "https://github.com/expo/react-native/archive/sdk-33.0.0.tar.gz",
