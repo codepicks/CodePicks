@@ -1,13 +1,8 @@
 import React from 'react'
-import {
-  Platform,
-  StatusBar,
-} from 'react-native'
-import {
-  AppLoading,
-  Asset,
-  Constants,
-} from 'expo'
+import { Platform, StatusBar } from 'react-native'
+import { AppLoading } from 'expo'
+import { Asset } from 'expo-asset'
+import Constants from 'expo-constants'
 import { Provider } from 'react-redux'
 import twitter from 'react-native-simple-twitter'
 import store from './src/store'
@@ -30,7 +25,10 @@ export default class App extends React.Component {
       require('./assets/images/robot-dev.png'),
       require('./assets/images/robot-prod.png'),
     ]),
-    twitter.setConsumerKey(Constants.manifest.extra.twitter.consumerKey, Constants.manifest.extra.twitter.consumerKeySecret),
+    twitter.setConsumerKey(
+      Constants.manifest.extra.twitter.consumerKey,
+      Constants.manifest.extra.twitter.consumerKeySecret,
+    ),
   ])
 
   handleLoadingError = error => {
