@@ -1,9 +1,6 @@
 import React, { Component } from 'react'
 import {
-  View,
-  StyleSheet,
-  Text,
-  Linking,
+  View, StyleSheet, Text, Linking,
 } from 'react-native'
 import { ViewContainer } from '../components'
 
@@ -19,7 +16,7 @@ class MyPicksScreen extends Component {
             onPress={() => Linking.openURL('https://github.com/KangYoosam/CodePicks')}
             style={styles.link}
           >
-            https://github.com/KangYoosam/CodePicks
+            https:// github.com/KangYoosam/CodePicks
           </Text>
           <Text style={styles.text}>こちらにContributeしていただければ幸いです。</Text>
         </View>
@@ -28,6 +25,7 @@ class MyPicksScreen extends Component {
   }
 }
 
+// @ts-ignore
 MyPicksScreen.navigationOptions = () => ({
   title: 'マイピックス',
 })

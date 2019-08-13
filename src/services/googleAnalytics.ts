@@ -1,15 +1,12 @@
-import {
-  Analytics as GoogleAnalytics,
-  Event,
-  ScreenHit,
-} from 'expo-analytics'
+import { Analytics as GoogleAnalytics, Event, ScreenHit } from 'expo-analytics'
 import { GOOGLE_ANALYTICS_UID } from 'react-native-dotenv'
-import {
-  getCurrentRouteName,
-  getCurrentRouteParams,
-} from '../utils'
+import { getCurrentRouteName, getCurrentRouteParams } from '../utils'
 
 class Analytics {
+  ga: any
+
+  code: any
+
   constructor(code = null) {
     this.ga = null
     this.code = code

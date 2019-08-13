@@ -12,7 +12,9 @@ import { Icon } from 'react-native-elements'
 import { ViewContainer, PickIcon } from '../components'
 import { colors } from '../constants'
 
-class WebViewScreen extends Component {
+class WebViewScreen extends Component<any, any> {
+  webview: any
+
   constructor(props) {
     super(props)
     this.state = {
@@ -41,16 +43,15 @@ class WebViewScreen extends Component {
     return (
       <ViewContainer noPadding>
         <WebView
-          ref={ref => { this.webview = ref }}
+          ref={ref => {
+            this.webview = ref
+          }}
           source={{ uri: source_url }}
           onNavigationStateChange={this.onNavigationStateChange.bind(this)}
         />
         <Footer style={styles.footer}>
           <View style={styles.footerLeft}>
-            <TouchableOpacity
-              style={{ width: 45 }}
-              onPress={() => this.webview.goBack()}
-            >
+            <TouchableOpacity style={{ width: 45 }} onPress={() => this.webview.goBack()}>
               <Icon
                 type="font-awesome"
                 name="arrow-left"
@@ -58,10 +59,7 @@ class WebViewScreen extends Component {
                 color={hasPrevious ? colors.primaryBlue : colors.fontLightGray}
               />
             </TouchableOpacity>
-            <TouchableOpacity
-              style={{ width: 45 }}
-              onPress={() => this.webview.goForward()}
-            >
+            <TouchableOpacity style={{ width: 45 }} onPress={() => this.webview.goForward()}>
               <Icon
                 type="font-awesome"
                 name="arrow-right"
@@ -72,10 +70,7 @@ class WebViewScreen extends Component {
           </View>
           <View style={styles.footerRight}>
             <View style={styles.rightButtonsContainer}>
-              <PickIcon
-                containerStyle={styles.pickIcon}
-                article={article}
-              />
+              <PickIcon containerStyle={styles.pickIcon} article={article} />
             </View>
           </View>
         </Footer>
@@ -92,7 +87,7 @@ const styles = StyleSheet.create({
     ...Platform.select({
       ios: {
         shadowColor: 'black',
-        shadowOffset: { height: -3 },
+        shadowOffset: { width: 100, height: -3 },
         shadowOpacity: 0.1,
         shadowRadius: 3,
       },
