@@ -6,7 +6,10 @@ import {
 import { Entypo } from '@expo/vector-icons'
 import { ViewContainer, TwitterLoginButton } from '../components'
 
-export default class MenuScreen extends React.Component {
+type Props = {
+  navigation: any
+}
+export default class MenuScreen extends React.Component<Props> {
   componentWillUpdate() {
     LayoutAnimation.easeInEaseOut()
   }

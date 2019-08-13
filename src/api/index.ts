@@ -14,7 +14,7 @@ export const api = async (path, params) => {
   return axios(`${BASE_URL}/${path}`, params)
 }
 
-export const get = (path, params) => {
+export const get = (path, params = {}) => {
   return api(path, {
     method: 'GET',
     data: params,

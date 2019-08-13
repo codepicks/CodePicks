@@ -1,16 +1,19 @@
 import React, { Component } from 'react'
 import {
-  View,
-  Text,
-  StyleSheet,
-  TouchableOpacity,
+  View, Text, StyleSheet, TouchableOpacity,
 } from 'react-native'
 import { connect } from 'react-redux'
 import { commentsFetch } from '../actions'
 import { ViewContainer, CommentItem } from '../components'
 import { colors } from '../constants'
 
-class BridgeViewScreen extends Component {
+type Props = {
+  navigation: any
+  comments: any
+  commentsFetch: any
+}
+
+class BridgeViewScreen extends Component<Props> {
   componentWillMount() {
     const { navigation } = this.props
     const { article } = navigation.state.params
@@ -44,24 +47,17 @@ class BridgeViewScreen extends Component {
     return (
       <ViewContainer>
         <View style={styles.articleContainer}>
-          <Text style={styles.articleTitle}>
-            {article.title}
-          </Text>
+          <Text style={styles.articleTitle}>{article.title}</Text>
           <Text style={styles.articleMeta}>
             {article.source}
-            |
+|
             {article.created_at}
           </Text>
-          <TouchableOpacity
-            style={styles.goNextButton}
-            onPress={() => this.onPressNext()}
-          >
+          <TouchableOpacity style={styles.goNextButton} onPress={() => this.onPressNext()}>
             <Text style={styles.goNextText}>続きを読む</Text>
           </TouchableOpacity>
         </View>
-        <View style={styles.picksContainer}>
-          {this.renderComments(currentComments)}
-        </View>
+        <View style={styles.picksContainer}>{this.renderComments(currentComments)}</View>
       </ViewContainer>
     )
   }
@@ -108,6 +104,9 @@ const StateToProps = ({ comments }) => {
   }
 }
 
-export default connect(StateToProps, {
-  commentsFetch,
-})(BridgeViewScreen)
+export default connect(
+  StateToProps,
+  {
+    commentsFetch,
+  },
+)(BridgeViewScreen)

@@ -1,14 +1,14 @@
 import React, { Component } from 'react'
-import {
-  Icon,
-} from 'native-base'
-import {
-  Platform,
-  TouchableOpacity,
-} from 'react-native'
+import { Icon } from 'native-base'
+import { Platform, TouchableOpacity } from 'react-native'
 import { withNavigation } from 'react-navigation'
 
-class BackIcon extends Component {
+type Props = {
+  navigation: any
+  article?: any
+}
+
+class BackIcon extends Component<Props> {
   onPressItem() {
     const { navigation, article } = this.props
 
@@ -33,6 +33,8 @@ class BackIcon extends Component {
           paddingRight: 20,
         }}
       >
+        {/**
+        // @ts-ignore Typeには size 無いらしいけど、ちゃんと影響を確認してから消す */}
         <Icon
           name={Platform.select({
             ios: 'ios-arrow-back',

@@ -30,10 +30,6 @@ export default class ViewContainer extends Component<Props> {
   }
 }
 
-ViewContainer.defaultProps = {
-  children: null,
-}
-
 const styles = StyleSheet.create({
   container: {
     flex: 1,

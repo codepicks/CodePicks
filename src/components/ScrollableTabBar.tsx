@@ -14,8 +14,27 @@ import { colors } from '../constants'
 
 const WINDOW_WIDTH = Dimensions.get('window').width
 
-class ScrollableTabBar extends Component {
+type Props = {
+  style?: any
+  tabs?: any
+  goToPage?: any
+  underlineStyle?: any
+  renderTab?: any
+  activeTab?: any
+  tabsContainerStyle?: any
+}
+
+type State = {
+  leftTabUnderline: any
+  widthTabUnderline: any
+  containerWidth: any
+}
+
+class ScrollableTabBar extends Component<Props, State> {
   tabsMeasurements: any
+  _containerMeasurements: any
+  _tabContainerMeasurements: any
+  scrollView: any
 
   constructor(props) {
     super(props)

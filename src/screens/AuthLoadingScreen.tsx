@@ -1,15 +1,16 @@
 import React, { Component } from 'react'
 import {
-  ActivityIndicator,
-  AsyncStorage,
-  StatusBar,
-  View,
+  ActivityIndicator, AsyncStorage, StatusBar, View,
 } from 'react-native'
 import { connect } from 'react-redux'
 import { authSetToken } from '../actions'
 import { navigateWithReset } from '../utils'
 
-class AuthLoadingScreen extends Component {
+type Props = {
+  navigation: any
+  authSetToken: any
+}
+class AuthLoadingScreen extends Component<Props> {
   constructor(props) {
     super(props)
     this.bootstrapAsync()
@@ -32,6 +33,9 @@ class AuthLoadingScreen extends Component {
   }
 }
 
-export default connect(null, {
-  authSetToken,
-})(AuthLoadingScreen)
+export default connect(
+  null,
+  {
+    authSetToken,
+  },
+)(AuthLoadingScreen)

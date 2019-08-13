@@ -7,7 +7,18 @@ import { colors } from '../constants'
 import { pickArticleSelect } from '../actions'
 import PickFormModal from './PickFormModal'
 
-class PickIcon extends Component {
+type Props = {
+  auth: any
+  containerStyle: any
+  pickArticleSelect: any
+  article: any
+}
+
+type State = {
+  isVisible: boolean
+  showModal: boolean
+}
+class PickIcon extends Component<Props, State> {
   constructor(props) {
     super(props)
 
@@ -55,9 +66,7 @@ class PickIcon extends Component {
           iconStyle={styles.icon}
           onPress={() => this.onPress()}
         />
-        <PickFormModal
-          isVisible={showModal}
-        />
+        <PickFormModal isVisible={showModal} />
       </View>
     )
   }
@@ -81,6 +90,9 @@ const StateToProps = ({ auth }) => {
   }
 }
 
-export default connect(StateToProps, {
-  pickArticleSelect,
-})(withNavigation(PickIcon))
+export default connect(
+  StateToProps,
+  {
+    pickArticleSelect,
+  },
+)(withNavigation(PickIcon))

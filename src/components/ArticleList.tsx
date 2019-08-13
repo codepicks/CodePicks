@@ -4,7 +4,14 @@ import TimerMixin from 'react-timer-mixin'
 import ArticleCard from './ArticleCard'
 import ArticleThumbnail from './ArticleThumbnail'
 
-export default class ArticleList extends Component {
+type Props = {
+  tabLabel: any
+  articles: any
+  fetchArticles: any
+}
+
+type State = { refreshing: boolean }
+export default class ArticleList extends Component<Props, State> {
   constructor(props) {
     super(props)
 
@@ -28,16 +35,9 @@ export default class ArticleList extends Component {
 
   renderArticle({ item, index }) {
     if (index === 0) {
-      return (
-        <ArticleThumbnail article={item} />
-      )
+      return <ArticleThumbnail article={item} />
     }
-    return (
-      <ArticleCard
-        article={item}
-        category={this.props.tabLabel}
-      />
-    )
+    return <ArticleCard article={item} category={this.props.tabLabel} />
   }
 
   render() {
