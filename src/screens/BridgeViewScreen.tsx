@@ -1,112 +1,115 @@
-import React, { Component } from 'react'
-import {
-  View, Text, StyleSheet, TouchableOpacity,
-} from 'react-native'
-import { connect } from 'react-redux'
-import { commentsFetch } from '../actions'
-import { ViewContainer, CommentItem } from '../components'
-import { colors } from '../constants'
+import React, { Component } from "react";
+import { View, Text, StyleSheet, TouchableOpacity } from "react-native";
+import { connect } from "react-redux";
+import { commentsFetch } from "../actions";
+import { ViewContainer, CommentItem } from "../components";
+import { colors } from "../constants";
+import { NavigationScreenProps } from "react-navigation";
 
 type Props = {
-  navigation: any
-  comments: any
-  commentsFetch: any
-}
+  comments: any;
+  commentsFetch: any;
+} & NavigationScreenProps;
 
 class BridgeViewScreen extends Component<Props> {
   componentWillMount() {
-    const { navigation } = this.props
-    const { article } = navigation.state.params
+    const { navigation } = this.props;
+    const { article } = navigation.state.params;
 
-    this.props.commentsFetch(article.hash)
+    this.props.commentsFetch(article.hash);
   }
 
   onPressNext() {
-    const { navigation } = this.props
-    const { article } = navigation.state.params
+    const { navigation } = this.props;
+    const { article } = navigation.state.params;
 
-    navigation.navigate('WebView', {
+    navigation.navigate("WebView", {
       article,
       title: article.title,
-      source_url: article.source_url,
-    })
+      source_url: article.source_url
+    });
   }
 
   // eslint-disable-next-line
   renderComments(currentComments) {
-    if (!currentComments) return null
+    if (!currentComments) return null;
 
-    return currentComments.map(comment => <CommentItem key={comment.hash} item={comment} />)
+    return currentComments.map(comment => (
+      <CommentItem key={comment.hash} item={comment} />
+    ));
   }
 
   render() {
-    const { navigation, comments } = this.props
-    const { article } = navigation.state.params
-    const currentComments = comments[article.hash]
+    const { navigation, comments } = this.props;
+    const { article } = navigation.state.params;
+    const currentComments = comments[article.hash];
 
     return (
       <ViewContainer>
         <View style={styles.articleContainer}>
           <Text style={styles.articleTitle}>{article.title}</Text>
           <Text style={styles.articleMeta}>
-            {article.source}
-|
-            {article.created_at}
+            {article.source}|{article.created_at}
           </Text>
-          <TouchableOpacity style={styles.goNextButton} onPress={() => this.onPressNext()}>
+          <TouchableOpacity
+            style={styles.goNextButton}
+            onPress={() => this.onPressNext()}
+          >
             <Text style={styles.goNextText}>続きを読む</Text>
           </TouchableOpacity>
         </View>
-        <View style={styles.picksContainer}>{this.renderComments(currentComments)}</View>
+        <View style={styles.picksContainer}>
+          {this.renderComments(currentComments)}
+        </View>
       </ViewContainer>
-    )
+    );
   }
 }
 
 const styles = StyleSheet.create({
   articleContainer: {
-    width: '100%',
+    width: "100%",
     padding: 20,
     borderBottomWidth: 4,
-    borderBottomColor: colors.fontGray,
+    borderBottomColor: colors.fontGray
   },
   articleTitle: {
     fontSize: 16,
-    fontWeight: 'bold',
-    fontFamily: 'HiraginoSans-W3',
+    fontWeight: "bold",
+    fontFamily: "HiraginoSans-W3"
   },
   articleMeta: {
     fontSize: 11,
-    fontWeight: 'bold',
-    fontFamily: 'HiraginoSans-W3',
+    fontWeight: "bold",
+    fontFamily: "HiraginoSans-W3",
     color: colors.fontLightGray,
-    marginVertical: 10,
+    marginVertical: 10
   },
   goNextButton: {
-    width: '100%',
+    width: "100%",
     borderWidth: StyleSheet.hairlineWidth,
     borderColor: colors.primaryBlue,
     paddingVertical: 10,
-    borderRadius: 5,
+    borderRadius: 5
   },
   goNextText: {
-    textAlign: 'center',
-    color: colors.primaryBlue,
+    textAlign: "center",
+    color: colors.primaryBlue
   },
   picksContainer: {
-    flex: 1,
-  },
-})
+    flex: 1
+  }
+});
 
 const StateToProps = ({ comments }) => {
   return {
-    comments,
-  }
-}
+    comments
+  };
+};
 
 export default connect(
   StateToProps,
   {
-    commentsFetch,
-  },
-)(BridgeViewScreen)
+    commentsFetch
+  }
+)(BridgeViewScreen);

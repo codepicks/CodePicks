@@ -1,27 +1,25 @@
-import React, { Component } from 'react'
-import {
-  ActivityIndicator, AsyncStorage, StatusBar, View,
-} from 'react-native'
-import { connect } from 'react-redux'
-import { authSetToken } from '../actions'
-import { navigateWithReset } from '../utils'
+import React, { Component } from "react";
+import { ActivityIndicator, AsyncStorage, StatusBar, View } from "react-native";
+import { connect } from "react-redux";
+import { authSetToken } from "../actions";
+import { navigateWithReset } from "../utils";
+import { NavigationScreenProps } from "react-navigation";
 
 type Props = {
-  navigation: any
-  authSetToken: any
-}
+  authSetToken: any;
+} & NavigationScreenProps;
 class AuthLoadingScreen extends Component<Props> {
   constructor(props) {
-    super(props)
-    this.bootstrapAsync()
+    super(props);
+    this.bootstrapAsync();
   }
 
   bootstrapAsync = async () => {
-    const token = await AsyncStorage.getItem('token')
+    const token = await AsyncStorage.getItem("token");
 
-    this.props.authSetToken(token)
-    navigateWithReset('ArticleList', this.props.navigation)
-  }
+    this.props.authSetToken(token);
+    navigateWithReset("ArticleList", this.props.navigation);
+  };
 
   render() {
     return (
@@ -29,13 +27,13 @@ class AuthLoadingScreen extends Component<Props> {
         <ActivityIndicator />
         <StatusBar barStyle="default" />
       </View>
-    )
+    );
   }
 }
 
 export default connect(
   null,
   {
-    authSetToken,
-  },
-)(AuthLoadingScreen)
+    authSetToken
+  }
+)(AuthLoadingScreen);
