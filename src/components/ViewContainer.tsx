@@ -1,12 +1,18 @@
+/* eslint-disable */
 import React, { Component } from 'react'
 import { View, StyleSheet, StatusBar } from 'react-native'
 import { colors } from '../constants'
 
-export default class ViewContainer extends Component {
+type Props = {
+  children?: React.ReactNode
+  style?: Record<string, any> // TODO:
+  noPadding?: boolean
+  white?: boolean
+}
+
+export default class ViewContainer extends Component<Props> {
   render() {
-    const {
-      children, style, noPadding, white,
-    } = this.props
+    const { children, style, noPadding, white } = this.props
 
     return (
       <View
@@ -17,17 +23,11 @@ export default class ViewContainer extends Component {
           style,
         ]}
       >
-        <StatusBar
-          barStyle="light-content"
-        />
+        <StatusBar barStyle="light-content" />
         {children}
       </View>
     )
   }
-}
-
-ViewContainer.defaultProps = {
-  children: null,
 }
 
 const styles = StyleSheet.create({

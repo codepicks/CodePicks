@@ -2,7 +2,11 @@ import React, { Component } from 'react'
 import { withNavigation } from 'react-navigation'
 import ThumbnailCard from './ThumbnailCard'
 
-class ArticleThumbnail extends Component {
+type Props = {
+  navigation: any
+  article: any
+}
+class ArticleThumbnail extends Component<Props> {
   onPressItem() {
     const { navigation, article } = this.props
 

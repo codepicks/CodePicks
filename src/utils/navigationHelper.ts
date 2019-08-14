@@ -1,6 +1,6 @@
 import { StackActions, NavigationActions } from 'react-navigation'
 
-export const getCurrentRouteName = navigationState => {
+export const getCurrentRouteName = (navigationState: any) => {
   if (!navigationState) {
     return null
   }
@@ -12,7 +12,7 @@ export const getCurrentRouteName = navigationState => {
   return route.routeName
 }
 
-export const getCurrentRouteParams = navigationState => {
+export const getCurrentRouteParams = (navigationState: any) => {
   if (!navigationState) {
     return null
   }
@@ -24,7 +24,7 @@ export const getCurrentRouteParams = navigationState => {
   return route.params
 }
 
-export const navigateWithReset = (routeName, navigation) => {
+export const navigateWithReset = (routeName: any, navigation: any) => {
   const resetAction = StackActions.reset({
     index: 0,
     key: null,

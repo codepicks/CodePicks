@@ -1,3 +1,4 @@
+/* eslint-disable */
 import React, { Component } from 'react'
 import {
   View,
@@ -13,7 +14,28 @@ import { colors } from '../constants'
 
 const WINDOW_WIDTH = Dimensions.get('window').width
 
-class ScrollableTabBar extends Component {
+type Props = {
+  style?: any
+  tabs?: any
+  goToPage?: any
+  underlineStyle?: any
+  renderTab?: any
+  activeTab?: any
+  tabsContainerStyle?: any
+}
+
+type State = {
+  leftTabUnderline: any
+  widthTabUnderline: any
+  containerWidth: any
+}
+
+class ScrollableTabBar extends Component<Props, State> {
+  tabsMeasurements: any
+  _containerMeasurements: any
+  _tabContainerMeasurements: any
+  scrollView: any
+
   constructor(props) {
     super(props)
 
@@ -39,9 +61,7 @@ class ScrollableTabBar extends Component {
         onLayout={onLayoutHandler}
       >
         <View style={[styles.tab, tabStyle]}>
-          <Text style={[styles.tabText, tabTextStyle]}>
-            {name}
-          </Text>
+          <Text style={[styles.tabText, tabTextStyle]}>{name}</Text>
         </View>
       </TouchableOpacity>
     )
@@ -61,12 +81,11 @@ class ScrollableTabBar extends Component {
     }
 
     return (
-      <View
-        style={[styles.container, this.props.style]}
-        onLayout={this.onContainerLayout}
-      >
+      <View style={[styles.container, this.props.style]} onLayout={this.onContainerLayout}>
         <ScrollView
-          ref={(scrollView) => { this.scrollView = scrollView }}
+          ref={scrollView => {
+            this.scrollView = scrollView
+          }}
           horizontal
           showsHorizontalScrollIndicator={false}
           showsVerticalScrollIndicator={false}
@@ -76,16 +95,28 @@ class ScrollableTabBar extends Component {
           style={styles.tabContainer}
         >
           <View
-            style={[styles.tabs, { width: this.state.containerWidth }, this.props.tabsContainerStyle]}
+            style={[
+              styles.tabs,
+              { width: this.state.containerWidth },
+              this.props.tabsContainerStyle,
+            ]}
             ref="tabContainer"
             onLayout={this.onTabContainerLayout.bind(this)}
           >
             {this.props.tabs.map((name, page) => {
               const isTabActive = this.props.activeTab === page
               const renderTab = this.props.renderTab || this.renderTab
-              return renderTab(name, page, isTabActive, this.props.goToPage, this.measureTab.bind(this, page))
+              return renderTab(
+                name,
+                page,
+                isTabActive,
+                this.props.goToPage,
+                this.measureTab.bind(this, page),
+              )
             })}
-            <Animated.View style={[tabUnderlineStyle, dynamicTabUnderline, this.props.underlineStyle]} />
+            <Animated.View
+              style={[tabUnderlineStyle, dynamicTabUnderline, this.props.underlineStyle]}
+            />
           </View>
         </ScrollView>
       </View>
@@ -93,7 +124,10 @@ class ScrollableTabBar extends Component {
   }
 
   componentWillReceiveProps(nextProps) {
-    if (JSON.stringify(this.props.tabs) !== JSON.stringify(nextProps.tabs) && this.state.containerWidth) {
+    if (
+      JSON.stringify(this.props.tabs) !== JSON.stringify(nextProps.tabs) &&
+      this.state.containerWidth
+    ) {
       this.setState({ containerWidth: null })
     }
   }
@@ -114,7 +148,10 @@ class ScrollableTabBar extends Component {
   measureTab(page, event) {
     const { x, width, height } = event.nativeEvent.layout
     this.tabsMeasurements[page] = {
-      left: x, right: x + width, width, height,
+      left: x,
+      right: x + width,
+      width,
+      height,
     }
   }
 
@@ -126,8 +163,8 @@ class ScrollableTabBar extends Component {
       const nextTabLeft = this.tabsMeasurements[position + 1].left
       const nextTabRight = this.tabsMeasurements[position + 1].right
 
-      const newLineLeft = ((pageOffset * nextTabLeft) + ((1 - pageOffset) * lineLeft))
-      const newLineRight = ((pageOffset * nextTabRight) + ((1 - pageOffset) * lineRight))
+      const newLineLeft = pageOffset * nextTabLeft + (1 - pageOffset) * lineLeft
+      const newLineRight = pageOffset * nextTabRight + (1 - pageOffset) * lineRight
 
       this.state.leftTabUnderline.setValue(newLineLeft)
       this.state.widthTabUnderline.setValue(newLineRight - newLineLeft)
@@ -146,19 +183,22 @@ class ScrollableTabBar extends Component {
     const absolutePageOffset = pageOffset * tabWidth
     let newScrollX = tabOffset + absolutePageOffset
 
-    newScrollX -= (containerWidth - ((1 - pageOffset) * tabWidth) - (pageOffset * nextTabWidth)) / 2
+    newScrollX -= (containerWidth - (1 - pageOffset) * tabWidth - pageOffset * nextTabWidth) / 2
     newScrollX = newScrollX >= 0 ? newScrollX : 0
 
-    const rightBoundScroll = this._tabContainerMeasurements.width - (this._containerMeasurements.width)
+    const rightBoundScroll =
+      this._tabContainerMeasurements.width - this._containerMeasurements.width
     newScrollX = newScrollX > rightBoundScroll ? rightBoundScroll : newScrollX
     this.scrollView.scrollTo({ x: newScrollX, y: 0, animated: false })
   }
 
   necessarilyMeasurementsCompleted(position, isLastTab) {
-    return this.tabsMeasurements[position]
-      && (isLastTab || this.tabsMeasurements[position + 1])
-      && this._tabContainerMeasurements
-      && this._containerMeasurements
+    return (
+      this.tabsMeasurements[position] &&
+      (isLastTab || this.tabsMeasurements[position + 1]) &&
+      this._tabContainerMeasurements &&
+      this._containerMeasurements
+    )
   }
 
   updateView(offset) {
@@ -220,8 +260,8 @@ const styles = StyleSheet.create({
     color: colors.white,
   },
   container: {
-    height: (Platform.OS === 'ios') ? 60 : 45,
-    paddingTop: (Platform.OS === 'ios') ? 20 : 5,
+    height: Platform.OS === 'ios' ? 60 : 45,
+    paddingTop: Platform.OS === 'ios' ? 20 : 5,
     backgroundColor: colors.primaryBlue,
   },
 })

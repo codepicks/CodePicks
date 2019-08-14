@@ -3,7 +3,12 @@ import * as Icon from '@expo/vector-icons'
 
 import { colors } from '../constants'
 
-export default class TabBarIcon extends React.Component {
+type Props = {
+  type: string
+  name: string
+  focused: boolean
+}
+export default class TabBarIcon extends React.Component<Props> {
   render() {
     const { type, name, focused } = this.props
     const IconComponent = Icon[type || 'Ionicons']

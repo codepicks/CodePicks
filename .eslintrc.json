@@ -7,31 +7,21 @@
   "parser": "babel-eslint",
   "extends": "airbnb",
   "rules": {
-    "semi": [
-      2,
-      "never"
-    ],
+    "semi": [2, "never"],
     "react/jsx-filename-extension": [
       1,
       {
-        "extensions": [
-          ".js",
-          ".jsx"
-        ]
+        "extensions": [".js", ".jsx", ".ts", ".tsx"]
       }
     ],
     "react/prefer-stateless-function": 0,
-    "no-use-before-define": [
-      "error", { "variables": false }
-    ],
+    "no-use-before-define": ["error", { "variables": false }],
     "react/prop-types": 0,
     "no-console": 0,
     "global-require": 0,
     "camelcase": 0,
     "arrow-body-style": 0,
-    "arrow-parens": [
-      "error", "as-needed"
-    ],
+    "arrow-parens": ["error", "as-needed"],
     "react/jsx-no-bind": 0,
     "react/destructuring-assignment": "never"
   },

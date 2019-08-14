@@ -5,7 +5,8 @@
     "android": "expo start --android",
     "ios": "expo start --ios",
     "eject": "expo eject",
-    "test": "node ./node_modules/jest/bin/jest.js --watchAll"
+    "test": "node ./node_modules/jest/bin/jest.js --watchAll",
+    "type-check": "tsc --noEmit"
   },
   "jest": {
     "preset": "jest-expo"
@@ -34,6 +35,9 @@
     "redux-thunk": "^2.3.0"
   },
   "devDependencies": {
+    "@types/react": "^16.9.1",
+    "@types/react-native": "^0.60.4",
+    "@types/react-navigation": "^3.0.8",
     "babel-eslint": "^10.0.1",
     "babel-preset-expo": "^5.0.0",
     "eslint": "^5.12.0",

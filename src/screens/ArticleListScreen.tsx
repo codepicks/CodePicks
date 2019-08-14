@@ -5,7 +5,12 @@ import ScrollableTabView from 'react-native-scrollable-tab-view'
 import { articlesFetch } from '../actions'
 import { ViewContainer, ScrollableTabBar, ArticleList } from '../components'
 
-class ArticleListScreen extends Component {
+type Props = {
+  articles: any
+  articlesFetch: any
+}
+
+class ArticleListScreen extends Component<Props> {
   componentWillUpdate() {
     LayoutAnimation.easeInEaseOut()
   }
@@ -13,10 +18,7 @@ class ArticleListScreen extends Component {
   render() {
     return (
       <ViewContainer>
-        <ScrollableTabView
-          initialPage={0}
-          renderTabBar={() => <ScrollableTabBar />}
-        >
+        <ScrollableTabView initialPage={0} renderTabBar={() => <ScrollableTabBar />}>
           <ArticleList
             key="all"
             tabLabel="全ニュース"
@@ -69,6 +71,9 @@ const StateToProps = ({ articles }) => {
   }
 }
 
-export default connect(StateToProps, {
-  articlesFetch,
-})(ArticleListScreen)
+export default connect(
+  StateToProps,
+  {
+    articlesFetch,
+  },
+)(ArticleListScreen)

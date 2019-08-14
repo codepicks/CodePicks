@@ -1,22 +1,19 @@
 import React, { Component } from 'react'
 import {
-  View,
-  Image,
-  Text,
-  StyleSheet,
+  View, Image, Text, StyleSheet,
 } from 'react-native'
 import { colors } from '../constants'
 
-export default class PickingArticle extends Component {
+type Props = {
+  article: any
+}
+export default class PickingArticle extends Component<Props> {
   render() {
     const { article } = this.props
 
     return (
       <View style={styles.articleContainer}>
-        <Image
-          source={{ uri: article.image }}
-          style={styles.articleImage}
-        />
+        <Image source={{ uri: article.image }} style={styles.articleImage} />
         <View style={styles.articleInfo}>
           <Text style={styles.articleTitle}>{article.title}</Text>
           <Text style={styles.articleSource}>{article.source}</Text>

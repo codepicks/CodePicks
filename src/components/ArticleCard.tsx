@@ -1,17 +1,19 @@
 import React, { Component } from 'react'
 import { Text, StyleSheet } from 'react-native'
 import {
-  Body,
-  ListItem,
-  Thumbnail,
-  Right,
+  Body, ListItem, Thumbnail, Right,
 } from 'native-base'
 import { withNavigation } from 'react-navigation'
 import { connect } from 'react-redux'
 import { colors } from '../constants'
 import PickIcon from './PickIcon'
 
-class ArticleCard extends Component {
+type Props = {
+  navigation: any
+  article: any
+  auth: any
+}
+class ArticleCard extends Component<Props> {
   onPressItem() {
     const { navigation, article } = this.props
 
@@ -38,10 +40,7 @@ class ArticleCard extends Component {
     } = article
 
     return (
-      <ListItem
-        onPress={() => this.onPressItem()}
-        style={styles.ListItem}
-      >
+      <ListItem onPress={() => this.onPressItem()} style={styles.ListItem}>
         <Thumbnail
           square
           source={{
@@ -50,12 +49,10 @@ class ArticleCard extends Component {
           style={{ backgroundColor: '#CCC' }}
         />
         <Body style={styles.body}>
-          <Text style={styles.title}>
-            {title}
-          </Text>
+          <Text style={styles.title}>{title}</Text>
           <Text style={styles.relativeTime}>
             {source}
-            |
+|
             {created_at}
           </Text>
         </Body>

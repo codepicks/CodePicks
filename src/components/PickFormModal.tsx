@@ -1,10 +1,6 @@
 import React, { Component } from 'react'
 import {
-  View,
-  Text,
-  StyleSheet,
-  TextInput,
-  TouchableOpacity,
+  View, Text, StyleSheet, TextInput, TouchableOpacity,
 } from 'react-native'
 import { connect } from 'react-redux'
 import Modal from 'react-native-modal'
@@ -12,7 +8,9 @@ import { pickAriticlePost } from '../actions'
 import { colors } from '../constants'
 import PickingArticle from './PickingArticle'
 
-class PickFormModal extends Component {
+type Props = { isVisible: boolean; pick: any; pickAriticlePost: any }
+type State = { isVisible: boolean; text: string }
+class PickFormModal extends Component<Props, State> {
   constructor(props) {
     super(props)
 
@@ -85,8 +83,7 @@ const styles = StyleSheet.create({
     flex: 1,
     paddingTop: 16,
   },
-  textInput: {
-  },
+  textInput: {},
   submitButtonContainer: {
     marginBottom: 15,
   },
@@ -107,6 +104,9 @@ const StateToProps = ({ pick }) => {
   }
 }
 
-export default connect(StateToProps, {
-  pickAriticlePost,
-})(PickFormModal)
+export default connect(
+  StateToProps,
+  {
+    pickAriticlePost,
+  },
+)(PickFormModal)

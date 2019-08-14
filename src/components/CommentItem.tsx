@@ -2,15 +2,11 @@ import React, { Component } from 'react'
 import { StyleSheet } from 'react-native'
 import { withNavigation } from 'react-navigation'
 import {
-  Card,
-  CardItem,
-  Thumbnail,
-  Text,
-  Left,
-  Body,
+  Card, CardItem, Thumbnail, Text, Left, Body,
 } from 'native-base'
 
-class CommentItem extends Component {
+type Props = { navigation: any; item: any }
+class CommentItem extends Component<Props> {
   render() {
     const { item } = this.props
 
@@ -18,13 +14,12 @@ class CommentItem extends Component {
       <Card style={styles.container}>
         <CardItem style={styles.header}>
           <Left>
-            <Thumbnail
-              source={{ uri: item.user.avatar }}
-              style={styles.avatar}
-            />
+            <Thumbnail source={{ uri: item.user.avatar }} style={styles.avatar} />
             <Body>
               <Text style={styles.username}>{item.user.name}</Text>
-              <Text note style={styles.createdAt}>{item.created_at}</Text>
+              <Text note style={styles.createdAt}>
+                {item.created_at}
+              </Text>
             </Body>
           </Left>
         </CardItem>
