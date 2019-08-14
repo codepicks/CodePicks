@@ -9,7 +9,9 @@ import store from "./src/store";
 import AppNavigator from "./src/navigation/AppNavigator";
 import Analytics from "./src/services/googleAnalytics";
 
-export default class App extends React.Component {
+type Props = { skipLoadingScreen: boolean };
+type State = { isLoadingComplete: boolean };
+export default class App extends React.Component<Props, State> {
   constructor(props) {
     super(props);
 
@@ -47,6 +49,7 @@ export default class App extends React.Component {
     if (!isLoadingComplete && !skipLoadingScreen) {
       return (
         <AppLoading
+          // @ts-ignore not compatible with Promise.all
           startAsync={this.loadResourcesAsync}
           onError={this.handleLoadingError}
           onFinish={this.handleFinishLoading}
