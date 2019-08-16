@@ -72,10 +72,8 @@ https://twitter.com/kangyoosam に連絡していただくか、定期的に開�
 - ReactNative初心者の方は[公式ドキュメント](https://facebook.github.io/react-native/docs/getting-started.html)をご一読ください。開発マシンは何でも構いませんが、**iOSアプリをビルド・開発するにはMacが必要です。**
 - `git clone git@github.com:KangYoosam/CodePicks.git`
 - `yarn`: 依存ライブラリをインストールします。
-- `react-native run link`: ReactNativeの依存ライブラリへリンクします。
-- `cp .env{.example,}` .env.exampleファイルから.envファイルをコピーし、生成します。
-- `react-native run-ios`: iOSのSimulatorを起動します。
-- `react-native run-android`: Androidのemulatorを起動します。
+- `yarn ios`: iOSのSimulatorを起動します。
+- `yarn android`: Androidのemulatorを起動します。
 
 **APIについて**: APIは諸事情によりまだオープンソース化されていません。しかし、僕にはAPI側のコードもOSS化する意思があります。当面はcodepicks本番のAPIを使ってください。↓こちらのようにJson形式でレスポンスが返ってきます。
 https://codepicks.jp/api/v1/categories/all/articles
