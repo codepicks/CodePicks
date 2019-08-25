@@ -1,20 +1,21 @@
-import React, { Component } from 'react'
-import { StyleSheet } from 'react-native'
-import { withNavigation } from 'react-navigation'
-import {
-  Card, CardItem, Thumbnail, Text, Left, Body,
-} from 'native-base'
+import React, { Component } from "react";
+import { StyleSheet } from "react-native";
+import { withNavigation, NavigationScreenProps } from "react-navigation";
+import { Card, CardItem, Thumbnail, Text, Left, Body } from "native-base";
 
-type Props = { navigation: any; item: any }
+type Props = { item: any } & NavigationScreenProps;
 class CommentItem extends Component<Props> {
   render() {
-    const { item } = this.props
+    const { item } = this.props;
 
     return (
       <Card style={styles.container}>
         <CardItem style={styles.header}>
           <Left>
-            <Thumbnail source={{ uri: item.user.avatar }} style={styles.avatar} />
+            <Thumbnail
+              source={{ uri: item.user.avatar }}
+              style={styles.avatar}
+            />
             <Body>
               <Text style={styles.username}>{item.user.name}</Text>
               <Text note style={styles.createdAt}>
@@ -36,7 +37,7 @@ class CommentItem extends Component<Props> {
           </Left>
         </CardItem> */}
       </Card>
-    )
+    );
   }
 }
 
@@ -45,23 +46,23 @@ const styles = StyleSheet.create({
     marginTop: 0,
     marginBottom: 0,
     marginLeft: 0,
-    marginRight: 0,
+    marginRight: 0
   },
   header: {
-    marginTop: 0,
+    marginTop: 0
   },
   avatar: {
     width: 50,
     height: 50,
-    borderRadius: 25,
+    borderRadius: 25
   },
   username: {
-    fontWeight: 'bold',
-    fontSize: 16,
+    fontWeight: "bold",
+    fontSize: 16
   },
   createdAt: {
-    fontSize: 14,
-  },
-})
+    fontSize: 14
+  }
+});
 
-export default withNavigation(CommentItem)
+export default withNavigation(CommentItem);

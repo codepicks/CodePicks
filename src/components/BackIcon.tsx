@@ -1,24 +1,23 @@
-import React, { Component } from 'react'
-import { Icon } from 'native-base'
-import { Platform, TouchableOpacity } from 'react-native'
-import { withNavigation } from 'react-navigation'
+import React, { Component } from "react";
+import { Icon } from "native-base";
+import { Platform, TouchableOpacity } from "react-native";
+import { withNavigation, NavigationScreenProps } from "react-navigation";
 
 type Props = {
-  navigation: any
-  article?: any
-}
+  article?: any;
+} & NavigationScreenProps;
 
 class BackIcon extends Component<Props> {
   onPressItem() {
-    const { navigation, article } = this.props
+    const { navigation, article } = this.props;
 
-    navigation.navigate('BridgeView', {
-      article,
-    })
+    navigation.navigate("BridgeView", {
+      article
+    });
   }
 
   render() {
-    const { navigation } = this.props
+    const { navigation } = this.props;
 
     return (
       <TouchableOpacity
@@ -28,27 +27,27 @@ class BackIcon extends Component<Props> {
           width: 50,
           paddingTop: Platform.select({
             ios: 8,
-            android: 13,
+            android: 13
           }),
-          paddingRight: 20,
+          paddingRight: 20
         }}
       >
         {/**
         // @ts-ignore Typeには size 無いらしいけど、ちゃんと影響を確認してから消す */}
         <Icon
           name={Platform.select({
-            ios: 'ios-arrow-back',
-            android: 'md-arrow-back',
+            ios: "ios-arrow-back",
+            android: "md-arrow-back"
           })}
           size={20}
           style={{
-            textAlign: 'center',
-            color: '#FFF',
+            textAlign: "center",
+            color: "#FFF"
           }}
         />
       </TouchableOpacity>
-    )
+    );
   }
 }
 
-export default withNavigation(BackIcon)
+export default withNavigation(BackIcon);
