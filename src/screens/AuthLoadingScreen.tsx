@@ -1,13 +1,15 @@
+/* eslint-disable no-shadow */
 import React, { Component } from "react";
 import { ActivityIndicator, AsyncStorage, StatusBar, View } from "react-native";
 import { connect } from "react-redux";
+import { NavigationScreenProps } from "react-navigation";
 import { authSetToken } from "../actions";
 import { navigateWithReset } from "../utils";
-import { NavigationScreenProps } from "react-navigation";
 
 type Props = {
   authSetToken: any;
 } & NavigationScreenProps;
+
 class AuthLoadingScreen extends Component<Props> {
   constructor(props) {
     super(props);
@@ -15,10 +17,11 @@ class AuthLoadingScreen extends Component<Props> {
   }
 
   bootstrapAsync = async () => {
+    const { navigation, authSetToken } = this.props;
     const token = await AsyncStorage.getItem("token");
 
-    this.props.authSetToken(token);
-    navigateWithReset("ArticleList", this.props.navigation);
+    authSetToken(token);
+    navigateWithReset("ArticleList", navigation);
   };
 
   render() {

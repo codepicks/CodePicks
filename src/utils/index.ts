@@ -1,1 +1,1 @@
-export * from './navigationHelper'
+export * from "./navigationHelper";

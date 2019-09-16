@@ -6,6 +6,28 @@ import { connect } from "react-redux";
 import { colors } from "../constants";
 import PickIcon from "./PickIcon";
 
+const styles = StyleSheet.create({
+  ListItem: {
+    backgroundColor: colors.white,
+    marginLeft: 0,
+    paddingHorizontal: 10,
+    paddingVertical: 0
+  },
+  body: {
+    paddingLeft: 13
+  },
+  title: {
+    color: colors.fontGray,
+    fontWeight: "bold",
+    marginBottom: 5,
+    fontSize: 16
+  },
+  relativeTime: {
+    color: colors.fontLightGray,
+    fontSize: 12
+  }
+});
+
 type Props = {
   article: any;
   auth: any;
@@ -46,37 +68,13 @@ class ArticleCard extends Component<Props> {
         />
         <Body style={styles.body}>
           <Text style={styles.title}>{title}</Text>
-          <Text style={styles.relativeTime}>
-            {source}|{created_at}
-          </Text>
+          <Text style={styles.relativeTime}>{`${source}|${created_at}`}</Text>
         </Body>
         {this.renderRight()}
       </ListItem>
     );
   }
 }
-
-const styles = StyleSheet.create({
-  ListItem: {
-    backgroundColor: colors.white,
-    marginLeft: 0,
-    paddingHorizontal: 10,
-    paddingVertical: 0
-  },
-  body: {
-    paddingLeft: 13
-  },
-  title: {
-    color: colors.fontGray,
-    fontWeight: "bold",
-    marginBottom: 5,
-    fontSize: 16
-  },
-  relativeTime: {
-    color: colors.fontLightGray,
-    fontSize: 12
-  }
-});
 
 const StateToProps = ({ auth }) => {
   return {

@@ -1,79 +1,84 @@
-import React, { Component } from 'react'
-import { LayoutAnimation } from 'react-native'
-import { connect } from 'react-redux'
-import ScrollableTabView from 'react-native-scrollable-tab-view'
-import { articlesFetch } from '../actions'
-import { ViewContainer, ScrollableTabBar, ArticleList } from '../components'
+/* eslint-disable no-shadow */
+import React, { Component } from "react";
+import { LayoutAnimation } from "react-native";
+import { connect } from "react-redux";
+import ScrollableTabView from "react-native-scrollable-tab-view";
+import { articlesFetch } from "../actions";
+import { ViewContainer, ScrollableTabBar, ArticleList } from "../components";
 
 type Props = {
-  articles: any
-  articlesFetch: any
-}
+  articles: any;
+  articlesFetch: any;
+};
 
 class ArticleListScreen extends Component<Props> {
   componentWillUpdate() {
-    LayoutAnimation.easeInEaseOut()
+    LayoutAnimation.easeInEaseOut();
   }
 
   render() {
+    const { articlesFetch, articles } = this.props;
     return (
       <ViewContainer>
-        <ScrollableTabView initialPage={0} renderTabBar={() => <ScrollableTabBar />}>
+        <ScrollableTabView
+          initialPage={0}
+          renderTabBar={() => <ScrollableTabBar />}
+        >
           <ArticleList
             key="all"
             tabLabel="全ニュース"
             fetchArticles={() => {
-              this.props.articlesFetch('all')
+              articlesFetch("all");
             }}
-            articles={this.props.articles.all}
+            articles={articles.all}
           />
           <ArticleList
             key="oss"
             tabLabel="オープンソース"
             fetchArticles={() => {
-              this.props.articlesFetch('oss')
+              articlesFetch("oss");
             }}
-            articles={this.props.articles.oss}
+            articles={articles.oss}
           />
           <ArticleList
             key="productivity_tips"
             tabLabel="生産性Tips"
             fetchArticles={() => {
-              this.props.articlesFetch('productivity_tips')
+              articlesFetch("productivity_tips");
             }}
-            articles={this.props.articles.productivity_tips}
+            articles={articles.productivity_tips}
           />
           <ArticleList
             key="personal_dev"
             tabLabel="個人開発"
             fetchArticles={() => {
-              this.props.articlesFetch('personal_dev')
+              articlesFetch("personal_dev");
             }}
-            articles={this.props.articles.personal_dev}
+            articles={articles.personal_dev}
           />
           <ArticleList
             key="freelance"
             tabLabel="フリーランス"
             fetchArticles={() => {
-              this.props.articlesFetch('freelance')
+              articlesFetch("freelance");
             }}
-            articles={this.props.articles.freelance}
+            articles={articles.freelance}
           />
         </ScrollableTabView>
       </ViewContainer>
-    )
+    );
   }
 }
 
 const StateToProps = ({ articles }) => {
   return {
-    articles,
-  }
-}
+    articles
+  };
+};
 
 export default connect(
   StateToProps,
   {
-    articlesFetch,
-  },
-)(ArticleListScreen)
+    articlesFetch
+  }
+)(ArticleListScreen);

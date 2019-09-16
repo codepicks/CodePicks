@@ -1,108 +1,104 @@
-import React from 'react'
-import { createStackNavigator, createBottomTabNavigator } from 'react-navigation'
-import { TabBarIcon } from '../components'
+import React from "react";
+import {
+  createStackNavigator,
+  createBottomTabNavigator,
+  TabBarIconProps
+} from "react-navigation";
+import { TabBarIcon } from "../components";
 import {
   WebViewScreen,
   BridgeViewScreen,
   ArticleListScreen,
   MyPicksScreen,
-  MenuScreen,
-} from '../screens'
+  MenuScreen
+} from "../screens";
 import {
   WebViewNavigationOptions,
-  BridgeViewNavigationOptions,
-} from '../navigationOptions'
-import { colors } from '../constants'
-import { getCurrentRouteName } from '../utils'
+  BridgeViewNavigationOptions
+} from "../navigationOptions";
+import { colors } from "../constants";
+import { getCurrentRouteName } from "../utils";
 
 const sharedRoutes = {
   WebView: {
     screen: WebViewScreen,
-    navigationOptions: ({ navigation }) => WebViewNavigationOptions(navigation),
+    navigationOptions: ({ navigation }) => WebViewNavigationOptions(navigation)
   },
   BridgeView: {
     screen: BridgeViewScreen,
-    navigationOptions: ({ navigation }) => BridgeViewNavigationOptions(navigation),
-  },
-}
+    navigationOptions: ({ navigation }) =>
+      BridgeViewNavigationOptions(navigation)
+  }
+};
 
 const ArticleList = {
   screen: createStackNavigator({
     ArticleList: {
       screen: ArticleListScreen,
       navigationOptions: {
-        header: null,
-      },
+        header: null
+      }
     },
-    ...sharedRoutes,
+    ...sharedRoutes
   }),
   navigationOptions: ({ navigation }) => ({
-    title: 'エントリー',
-    tabBarIcon: ({ focused }) => {
+    title: "エントリー",
+    tabBarIcon: ({ focused }: TabBarIconProps) => {
       return (
-        <TabBarIcon
-          focused={focused}
-          type="FontAwesome"
-          name="newspaper-o"
-        />
-      )
+        <TabBarIcon focused={focused} type="FontAwesome" name="newspaper-o" />
+      );
     },
-    tabBarVisible: getCurrentRouteName(navigation.state) !== 'WebView',
-  }),
-}
+    tabBarVisible: getCurrentRouteName(navigation.state) !== "WebView"
+  })
+};
 
 const MyPicks = {
-  screen: createStackNavigator({
-    MyPicks: {
-      screen: MyPicksScreen,
+  screen: createStackNavigator(
+    {
+      MyPicks: {
+        screen: MyPicksScreen
+      }
     },
-  }, {
-    headerMode: 'none',
-  }),
+    {
+      headerMode: "none"
+    }
+  ),
   navigationOptions: {
-    title: 'マイピックス',
-    tabBarIcon: ({ focused }) => {
+    title: "マイピックス",
+    tabBarIcon: ({ focused }: TabBarIconProps) => {
       return (
-        <TabBarIcon
-          focused={focused}
-          type="FontAwesome"
-          name="bookmark"
-        />
-      )
-    },
-  },
-}
+        <TabBarIcon focused={focused} type="FontAwesome" name="bookmark" />
+      );
+    }
+  }
+};
 
 const Menu = {
   screen: createStackNavigator({
     Menu: {
       screen: MenuScreen,
       navigationOptions: {
-        headerTitle: 'メニュー',
+        headerTitle: "メニュー",
         headerStyle: {
-          backgroundColor: colors.primaryBlue,
+          backgroundColor: colors.primaryBlue
         },
         headerTitleStyle: {
-          color: colors.white,
-        },
-      },
-    },
+          color: colors.white
+        }
+      }
+    }
   }),
   navigationOptions: ({ navigation }) => ({
-    title: 'Settings',
-    tabBarIcon: ({ focused }) => (
-      <TabBarIcon
-        type="Entypo"
-        focused={focused}
-        name="menu"
-      />
+    title: "Settings",
+    tabBarIcon: ({ focused }: TabBarIconProps) => (
+      <TabBarIcon type="Entypo" focused={focused} name="menu" />
     ),
-    tabBarVisible: getCurrentRouteName(navigation.state) !== 'WebView',
-  }),
-}
+    tabBarVisible: getCurrentRouteName(navigation.state) !== "WebView"
+  })
+};
 
 export default createBottomTabNavigator({
   ArticleList,
   MyPicks,
-  Menu,
-})
+  Menu
+});

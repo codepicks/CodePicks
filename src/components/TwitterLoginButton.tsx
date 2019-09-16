@@ -1,3 +1,4 @@
+/* eslint-disable no-shadow */
 import React, { Component } from "react";
 import { Text, StyleSheet, Alert } from "react-native";
 import { Entypo } from "@expo/vector-icons";
@@ -7,6 +8,17 @@ import { connect } from "react-redux";
 import { authRegister } from "../actions";
 import { colors } from "../constants";
 
+const styles = StyleSheet.create({
+  text: {
+    color: colors.white
+  },
+  icon: {
+    color: colors.white,
+    fontSize: 16,
+    marginRight: 10
+  }
+});
+
 type Props = {
   authRegister: any;
   auth: any;
@@ -14,7 +26,8 @@ type Props = {
 
 class TwitterLoginButton extends Component<Props> {
   onSuccess = user => {
-    this.props.authRegister(user);
+    const { authRegister } = this.props;
+    authRegister(user);
 
     Alert.alert("Success", "ログインに成功しました。Pickできます。", [
       {
@@ -39,25 +52,6 @@ class TwitterLoginButton extends Component<Props> {
     );
   }
 }
-
-const styles = StyleSheet.create({
-  container: {
-    width: "100%",
-    height: 60,
-    backgroundColor: colors.twitter,
-    flexDirection: "row",
-    alignItems: "center",
-    justifyContent: "center"
-  },
-  text: {
-    color: colors.white
-  },
-  icon: {
-    color: colors.white,
-    fontSize: 16,
-    marginRight: 10
-  }
-});
 
 const StateToProps = ({ auth }) => {
   return {

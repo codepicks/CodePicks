@@ -1,3 +1,4 @@
+/* eslint-disable global-require */
 import React from "react";
 import { Platform, StatusBar } from "react-native";
 import { AppLoading } from "expo";
