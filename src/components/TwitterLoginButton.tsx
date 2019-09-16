@@ -1,73 +1,73 @@
-import React, { Component } from "react";
-import { Text, StyleSheet, Alert } from "react-native";
-import { Entypo } from "@expo/vector-icons";
-import { TWLoginButton } from "react-native-simple-twitter";
-import { withNavigation, NavigationScreenProps } from "react-navigation";
-import { connect } from "react-redux";
-import { authRegister } from "../actions";
-import { colors } from "../constants";
+import React, { Component } from 'react'
+import { Text, StyleSheet, Alert } from 'react-native'
+import { Entypo } from '@expo/vector-icons'
+import { TWLoginButton } from 'react-native-simple-twitter'
+import { withNavigation, NavigationScreenProps } from 'react-navigation'
+import { connect } from 'react-redux'
+import { authRegister } from '../actions'
+import { colors } from '../constants'
 
 type Props = {
-  authRegister: any;
-  auth: any;
-} & NavigationScreenProps;
+  authRegister: any
+  auth: any
+} & NavigationScreenProps
 
 class TwitterLoginButton extends Component<Props> {
   onSuccess = user => {
-    this.props.authRegister(user);
+    this.props.authRegister(user)
 
-    Alert.alert("Success", "ログインに成功しました。Pickできます。", [
+    Alert.alert('Success', 'ログインに成功しました。Pickできます。', [
       {
-        text: "OK",
+        text: 'OK',
         onPress: () => {
           // redirect?
-        }
-      }
-    ]);
-  };
+        },
+      },
+    ])
+  }
 
   render() {
-    const { auth } = this.props;
+    const { auth } = this.props
 
-    if (auth.token) return null;
+    if (auth.token) return null
 
     return (
       <TWLoginButton onSuccess={this.onSuccess}>
         <Entypo name="twitter" style={styles.icon} />
         <Text style={styles.text}>Twitterでログインする</Text>
       </TWLoginButton>
-    );
+    )
   }
 }
 
 const styles = StyleSheet.create({
   container: {
-    width: "100%",
+    width: '100%',
     height: 60,
     backgroundColor: colors.twitter,
-    flexDirection: "row",
-    alignItems: "center",
-    justifyContent: "center"
+    flexDirection: 'row',
+    alignItems: 'center',
+    justifyContent: 'center',
   },
   text: {
-    color: colors.white
+    color: colors.white,
   },
   icon: {
     color: colors.white,
     fontSize: 16,
-    marginRight: 10
-  }
-});
+    marginRight: 10,
+  },
+})
 
 const StateToProps = ({ auth }) => {
   return {
-    auth
-  };
-};
+    auth,
+  }
+}
 
 export default connect(
   StateToProps,
   {
-    authRegister
-  }
-)(withNavigation(TwitterLoginButton));
+    authRegister,
+  },
+)(withNavigation(TwitterLoginButton))

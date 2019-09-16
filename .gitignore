@@ -8,3 +8,4 @@ npm-debug.*
 .DS_Store
 .env
 *.keystore
+yarn-error.log
