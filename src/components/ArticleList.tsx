@@ -21,12 +21,14 @@ export default class ArticleList extends Component<Props, State> {
   }
 
   componentWillMount() {
-    this.props.fetchArticles();
+    const { fetchArticles } = this.props;
+    fetchArticles();
   }
 
   onRefresh() {
+    const { fetchArticles } = this.props;
     this.setState({ refreshing: true });
-    this.props.fetchArticles();
+    fetchArticles();
 
     TimerMixin.setTimeout(() => {
       this.setState({ refreshing: false });
@@ -34,18 +36,19 @@ export default class ArticleList extends Component<Props, State> {
   }
 
   renderArticle({ item, index }) {
+    const { tabLabel } = this.props;
     if (index === 0) {
       return <ArticleThumbnail article={item} />;
     }
-    return <ArticleCard article={item} category={this.props.tabLabel} />;
+    return <ArticleCard article={item} category={tabLabel} />;
   }
 
   render() {
     const { refreshing } = this.state;
-
+    const { articles } = this.props;
     return (
       <FlatList
-        data={this.props.articles}
+        data={articles}
         renderItem={data => this.renderArticle(data)}
         keyExtractor={(item, index) => index.toString()}
         onRefresh={() => this.onRefresh()}

@@ -1,7 +1,8 @@
 import React from "react";
 import {
   createStackNavigator,
-  createBottomTabNavigator
+  createBottomTabNavigator,
+  TabBarIconProps
 } from "react-navigation";
 import { TabBarIcon } from "../components";
 import {
@@ -42,7 +43,7 @@ const ArticleList = {
   }),
   navigationOptions: ({ navigation }) => ({
     title: "エントリー",
-    tabBarIcon: ({ focused }) => {
+    tabBarIcon: ({ focused }: TabBarIconProps) => {
       return (
         <TabBarIcon focused={focused} type="FontAwesome" name="newspaper-o" />
       );
@@ -64,7 +65,7 @@ const MyPicks = {
   ),
   navigationOptions: {
     title: "マイピックス",
-    tabBarIcon: ({ focused }) => {
+    tabBarIcon: ({ focused }: TabBarIconProps) => {
       return (
         <TabBarIcon focused={focused} type="FontAwesome" name="bookmark" />
       );
@@ -89,7 +90,7 @@ const Menu = {
   }),
   navigationOptions: ({ navigation }) => ({
     title: "Settings",
-    tabBarIcon: ({ focused }) => (
+    tabBarIcon: ({ focused }: TabBarIconProps) => (
       <TabBarIcon type="Entypo" focused={focused} name="menu" />
     ),
     tabBarVisible: getCurrentRouteName(navigation.state) !== "WebView"

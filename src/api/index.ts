@@ -1,5 +1,5 @@
 import { AsyncStorage } from "react-native";
-import { API_HOST, API_ENTRY_POINT } from "react-native-dotenv";
+import { API_ENTRY_POINT } from "react-native-dotenv";
 import axios from "axios";
 
 const BASE_URL = `${"https://codepicks.jp"}${API_ENTRY_POINT}`;

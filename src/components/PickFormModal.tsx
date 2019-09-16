@@ -12,6 +12,36 @@ import { pickAriticlePost } from "../actions";
 import { colors } from "../constants";
 import PickingArticle from "./PickingArticle";
 
+const styles = StyleSheet.create({
+  container: {
+    margin: 0,
+    justifyContent: "flex-end"
+  },
+  inner: {
+    flex: 0.6,
+    backgroundColor: "white",
+    paddingVertical: 20,
+    paddingHorizontal: 15
+  },
+  textInputContainer: {
+    flex: 1,
+    paddingTop: 16
+  },
+  textInput: {},
+  submitButtonContainer: {
+    marginBottom: 15
+  },
+  submitButton: {
+    backgroundColor: colors.primaryBlue,
+    borderRadius: 2,
+    paddingVertical: 10
+  },
+  submitButtonText: {
+    color: colors.white,
+    textAlign: "center"
+  }
+});
+
 type Props = { isVisible: boolean; pick: any; pickAriticlePost: any };
 type State = { isVisible: boolean; text: string };
 class PickFormModal extends Component<Props, State> {
@@ -74,36 +104,6 @@ class PickFormModal extends Component<Props, State> {
     );
   }
 }
-
-const styles = StyleSheet.create({
-  container: {
-    margin: 0,
-    justifyContent: "flex-end"
-  },
-  inner: {
-    flex: 0.6,
-    backgroundColor: "white",
-    paddingVertical: 20,
-    paddingHorizontal: 15
-  },
-  textInputContainer: {
-    flex: 1,
-    paddingTop: 16
-  },
-  textInput: {},
-  submitButtonContainer: {
-    marginBottom: 15
-  },
-  submitButton: {
-    backgroundColor: colors.primaryBlue,
-    borderRadius: 2,
-    paddingVertical: 10
-  },
-  submitButtonText: {
-    color: colors.white,
-    textAlign: "center"
-  }
-});
 
 const StateToProps = ({ pick }) => {
   return {

@@ -1,25 +1,10 @@
-import React, { Component } from "react";
+import React from "react";
 import { View, Image, Text, StyleSheet } from "react-native";
 import { colors } from "../constants";
 
 type Props = {
   article: any;
 };
-export default class PickingArticle extends Component<Props> {
-  render() {
-    const { article } = this.props;
-
-    return (
-      <View style={styles.articleContainer}>
-        <Image source={{ uri: article.image }} style={styles.articleImage} />
-        <View style={styles.articleInfo}>
-          <Text style={styles.articleTitle}>{article.title}</Text>
-          <Text style={styles.articleSource}>{article.source}</Text>
-        </View>
-      </View>
-    );
-  }
-}
 
 const styles = StyleSheet.create({
   articleContainer: {
@@ -47,3 +32,16 @@ const styles = StyleSheet.create({
     color: colors.fontLightGray
   }
 });
+const PickingArticle = ({ article }: Props) => {
+  return (
+    <View style={styles.articleContainer}>
+      <Image source={{ uri: article.image }} style={styles.articleImage} />
+      <View style={styles.articleInfo}>
+        <Text style={styles.articleTitle}>{article.title}</Text>
+        <Text style={styles.articleSource}>{article.source}</Text>
+      </View>
+    </View>
+  );
+};
+
+export default PickingArticle;

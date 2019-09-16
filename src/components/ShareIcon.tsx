@@ -4,6 +4,13 @@ import { Icon } from "native-base";
 import { withNavigation, NavigationScreenProps } from "react-navigation";
 import { colors } from "../constants";
 
+const styles = StyleSheet.create({
+  shareIcon: {
+    color: colors.white,
+    fontSize: 20
+  }
+});
+
 type Props = {
   article?: any;
   url: string;
@@ -41,12 +48,5 @@ class ShareIcon extends Component<Props> {
     );
   }
 }
-
-const styles = StyleSheet.create({
-  shareIcon: {
-    color: colors.white,
-    fontSize: 20
-  }
-});
 
 export default withNavigation(ShareIcon);

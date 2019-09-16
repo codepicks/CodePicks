@@ -12,6 +12,46 @@ import { Icon } from "react-native-elements";
 import { ViewContainer, PickIcon } from "../components";
 import { colors } from "../constants";
 
+const styles = StyleSheet.create({
+  // FIXME: shadow効かせる
+  footer: {
+    height: 20,
+    backgroundColor: "#FFF",
+    ...Platform.select({
+      ios: {
+        shadowColor: "black",
+        shadowOffset: { width: 100, height: -3 },
+        shadowOpacity: 0.1,
+        shadowRadius: 3
+      },
+      android: {
+        elevation: 20
+      }
+    })
+  },
+  footerLeft: {
+    flex: 1,
+    flexDirection: "row",
+    alignItems: "center"
+  },
+  footerRight: {
+    flex: 1,
+    flexDirection: "row",
+    alignItems: "center"
+  },
+  rightButtonsContainer: {
+    flex: 1,
+    flexDirection: "row",
+    alignItems: "flex-end",
+    justifyContent: "flex-end"
+  },
+  pickIcon: {
+    flex: 1,
+    flexDirection: "row",
+    justifyContent: "flex-end",
+    marginRight: 20
+  }
+});
 class WebViewScreen extends Component<any, any> {
   webview: any;
 
@@ -84,46 +124,5 @@ class WebViewScreen extends Component<any, any> {
     );
   }
 }
-
-const styles = StyleSheet.create({
-  // FIXME: shadow効かせる
-  footer: {
-    height: 20,
-    backgroundColor: "#FFF",
-    ...Platform.select({
-      ios: {
-        shadowColor: "black",
-        shadowOffset: { width: 100, height: -3 },
-        shadowOpacity: 0.1,
-        shadowRadius: 3
-      },
-      android: {
-        elevation: 20
-      }
-    })
-  },
-  footerLeft: {
-    flex: 1,
-    flexDirection: "row",
-    alignItems: "center"
-  },
-  footerRight: {
-    flex: 1,
-    flexDirection: "row",
-    alignItems: "center"
-  },
-  rightButtonsContainer: {
-    flex: 1,
-    flexDirection: "row",
-    alignItems: "flex-end",
-    justifyContent: "flex-end"
-  },
-  pickIcon: {
-    flex: 1,
-    flexDirection: "row",
-    justifyContent: "flex-end",
-    marginRight: 20
-  }
-});
 
 export default WebViewScreen;

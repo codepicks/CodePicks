@@ -5,6 +5,12 @@ import { Entypo } from "@expo/vector-icons";
 import { NavigationScreenProps } from "react-navigation";
 import { ViewContainer, TwitterLoginButton } from "../components";
 
+const styles = StyleSheet.create({
+  listitem: {
+    height: 50
+  }
+});
+
 type Props = NavigationScreenProps;
 export default class MenuScreen extends React.Component<Props> {
   componentWillUpdate() {
@@ -147,9 +153,3 @@ export default class MenuScreen extends React.Component<Props> {
     );
   }
 }
-
-const styles = StyleSheet.create({
-  listitem: {
-    height: 50
-  }
-});

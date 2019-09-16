@@ -24,16 +24,16 @@ module.exports = {
         devDependencies: ["** /*.test.tsx", "**/*.story.tsx"]
       }
     ],
-    "import/no-unresolved": [2, { ignore: ["./assets"] }],
+    "import/no-unresolved": ["error", { ignore: ["./assets"] }],
     "import/prefer-default-export": "off",
     "@typescript-eslint/no-unused-vars": "error",
     "@typescript-eslint/prefer-interface": "off",
-    "@typescript-eslint/camelcase": [
-      "error",
-      { properties: "never", ignoreDestructuring: true }
-    ],
+    "@typescript-eslint/camelcase": "off",
     "@typescript-eslint/explicit-function-return-type": "off",
-    "react-native/no-unused-styles": 2
+    "react-native/no-unused-styles": "error",
+    "@typescript-eslint/ban-ts-ignore": "warn",
+    "react/sort-comp": "warn",
+    "react/jsx-no-bind": "warn"
   },
   settings: {
     "import/resolver": {

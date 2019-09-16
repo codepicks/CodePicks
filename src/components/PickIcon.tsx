@@ -7,6 +7,18 @@ import { colors } from "../constants";
 import { pickArticleSelect } from "../actions";
 import PickFormModal from "./PickFormModal";
 
+const styles = StyleSheet.create({
+  container: {
+    flex: 1,
+    alignSelf: "flex-end",
+    justifyContent: "flex-end"
+  },
+  icon: {
+    fontWeight: "100",
+    color: colors.fontLightGray
+  }
+});
+
 type Props = {
   auth: any;
   containerStyle: any;
@@ -42,7 +54,7 @@ class PickIcon extends Component<Props, State> {
     const { showModal } = this.state;
 
     // eslint-disable-next-line
-    this.props.pickArticleSelect(article)
+    this.props.pickArticleSelect(article);
 
     this.setState({
       showModal: !showModal
@@ -71,18 +83,6 @@ class PickIcon extends Component<Props, State> {
     );
   }
 }
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    alignSelf: "flex-end",
-    justifyContent: "flex-end"
-  },
-  icon: {
-    fontWeight: "100",
-    color: colors.fontLightGray
-  }
-});
 
 const StateToProps = ({ auth }) => {
   return {

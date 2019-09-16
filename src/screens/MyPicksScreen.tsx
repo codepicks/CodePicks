@@ -1,38 +1,6 @@
-import React, { Component } from "react";
+import React from "react";
 import { View, StyleSheet, Text, Linking } from "react-native";
 import { ViewContainer } from "../components";
-
-class MyPicksScreen extends Component {
-  render() {
-    return (
-      <ViewContainer>
-        <View style={styles.container}>
-          <Text style={styles.header}>助けてください！</Text>
-          <Text style={styles.text}>CodePicksはオープンソースです。</Text>
-          <Text style={styles.text}>
-            「マイピックス」をはじめ色々な機能を追加していきますが、
-          </Text>
-          <Text
-            onPress={() =>
-              Linking.openURL("https://github.com/KangYoosam/CodePicks")
-            }
-            style={styles.link}
-          >
-            https:// github.com/KangYoosam/CodePicks
-          </Text>
-          <Text style={styles.text}>
-            こちらにContributeしていただければ幸いです。
-          </Text>
-        </View>
-      </ViewContainer>
-    );
-  }
-}
-
-// @ts-ignore
-MyPicksScreen.navigationOptions = () => ({
-  title: "マイピックス"
-});
 
 const styles = StyleSheet.create({
   container: {
@@ -56,6 +24,35 @@ const styles = StyleSheet.create({
     color: "blue",
     marginBottom: 5
   }
+});
+
+const MyPicksScreen = () => {
+  return (
+    <ViewContainer>
+      <View style={styles.container}>
+        <Text style={styles.header}>助けてください！</Text>
+        <Text style={styles.text}>CodePicksはオープンソースです。</Text>
+        <Text style={styles.text}>
+          「マイピックス」をはじめ色々な機能を追加していきますが、
+        </Text>
+        <Text
+          onPress={() =>
+            Linking.openURL("https://github.com/KangYoosam/CodePicks")
+          }
+          style={styles.link}
+        >
+          https:// github.com/KangYoosam/CodePicks
+        </Text>
+        <Text style={styles.text}>
+          こちらにContributeしていただければ幸いです。
+        </Text>
+      </View>
+    </ViewContainer>
+  );
+};
+
+MyPicksScreen.navigationOptions = () => ({
+  title: "マイピックス"
 });
 
 export default MyPicksScreen;
