@@ -1,34 +1,34 @@
-import { StackActions, NavigationActions } from 'react-navigation'
+import { StackActions, NavigationActions } from "react-navigation";
 
 export const getCurrentRouteName = (navigationState: any) => {
   if (!navigationState) {
-    return null
+    return null;
   }
-  const route = navigationState.routes[navigationState.index]
+  const route = navigationState.routes[navigationState.index];
 
   if (route.routes) {
-    return getCurrentRouteName(route)
+    return getCurrentRouteName(route);
   }
-  return route.routeName
-}
+  return route.routeName;
+};
 
 export const getCurrentRouteParams = (navigationState: any) => {
   if (!navigationState) {
-    return null
+    return null;
   }
-  const route = navigationState.routes[navigationState.index]
+  const route = navigationState.routes[navigationState.index];
 
   if (route.routes) {
-    return getCurrentRouteParams(route)
+    return getCurrentRouteParams(route);
   }
-  return route.params
-}
+  return route.params;
+};
 
 export const navigateWithReset = (routeName: any, navigation: any) => {
   const resetAction = StackActions.reset({
     index: 0,
     key: null,
-    actions: [NavigationActions.navigate({ routeName })],
-  })
-  navigation.dispatch(resetAction)
-}
+    actions: [NavigationActions.navigate({ routeName })]
+  });
+  navigation.dispatch(resetAction);
+};

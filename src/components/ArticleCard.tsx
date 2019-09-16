@@ -47,7 +47,8 @@ class ArticleCard extends Component<Props> {
         <Body style={styles.body}>
           <Text style={styles.title}>{title}</Text>
           <Text style={styles.relativeTime}>
-            {source}|{created_at}
+            {source}|
+{created_at}
           </Text>
         </Body>
         {this.renderRight()}

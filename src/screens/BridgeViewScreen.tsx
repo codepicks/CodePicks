@@ -1,10 +1,10 @@
 import React, { Component } from "react";
 import { View, Text, StyleSheet, TouchableOpacity } from "react-native";
 import { connect } from "react-redux";
+import { NavigationScreenProps } from "react-navigation";
 import { commentsFetch } from "../actions";
 import { ViewContainer, CommentItem } from "../components";
 import { colors } from "../constants";
-import { NavigationScreenProps } from "react-navigation";
 
 type Props = {
   comments: any;
@@ -49,7 +49,8 @@ class BridgeViewScreen extends Component<Props> {
         <View style={styles.articleContainer}>
           <Text style={styles.articleTitle}>{article.title}</Text>
           <Text style={styles.articleMeta}>
-            {article.source}|{article.created_at}
+            {article.source}|
+{article.created_at}
           </Text>
           <TouchableOpacity
             style={styles.goNextButton}

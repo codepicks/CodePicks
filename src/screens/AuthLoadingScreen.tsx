@@ -1,9 +1,9 @@
 import React, { Component } from "react";
 import { ActivityIndicator, AsyncStorage, StatusBar, View } from "react-native";
 import { connect } from "react-redux";
+import { NavigationScreenProps } from "react-navigation";
 import { authSetToken } from "../actions";
 import { navigateWithReset } from "../utils";
-import { NavigationScreenProps } from "react-navigation";
 
 type Props = {
   authSetToken: any;

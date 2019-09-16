@@ -2,8 +2,8 @@ import React from "react";
 import { LayoutAnimation, StyleSheet } from "react-native";
 import { List, ListItem, Text, Left, Right } from "native-base";
 import { Entypo } from "@expo/vector-icons";
-import { ViewContainer, TwitterLoginButton } from "../components";
 import { NavigationScreenProps } from "react-navigation";
+import { ViewContainer, TwitterLoginButton } from "../components";
 
 type Props = NavigationScreenProps;
 export default class MenuScreen extends React.Component<Props> {

@@ -1,21 +1,17 @@
-import React, { Component } from 'react'
-import {
-  View, Text, TouchableOpacity, StyleSheet,
-} from 'react-native'
-import { Thumbnail } from 'native-base'
-import { colors } from '../constants'
+import React, { Component } from "react";
+import { View, Text, TouchableOpacity, StyleSheet } from "react-native";
+import { Thumbnail } from "native-base";
+import { colors } from "../constants";
 
 type Props = {
-  title: string
-  image: any
-  downsideTitle: string
-  onPressItem: () => void
-}
+  title: string;
+  image: any;
+  downsideTitle: string;
+  onPressItem: () => void;
+};
 class ThumbnailCard extends Component<Props> {
   render() {
-    const {
-      title, image, downsideTitle, onPressItem,
-    } = this.props
+    const { title, image, downsideTitle, onPressItem } = this.props;
 
     return (
       <TouchableOpacity onPress={() => onPressItem()}>
@@ -28,48 +24,48 @@ class ThumbnailCard extends Component<Props> {
           </View>
         </View>
       </TouchableOpacity>
-    )
+    );
   }
 }
 
 const styles = StyleSheet.create({
   container: {
-    width: '100%',
-    height: 190,
+    width: "100%",
+    height: 190
   },
   image: {
     flex: 1,
-    width: '100%',
-    resizeMode: 'cover',
-    backgroundColor: '#CCC',
+    width: "100%",
+    resizeMode: "cover",
+    backgroundColor: "#CCC"
   },
   textContainer: {
-    position: 'absolute',
+    position: "absolute",
     bottom: 10,
     zIndex: 10,
-    marginHorizontal: 10,
+    marginHorizontal: 10
   },
   title: {
     fontSize: 17,
-    fontWeight: 'bold',
-    fontFamily: 'HiraginoSans-W3',
-    color: colors.white,
+    fontWeight: "bold",
+    fontFamily: "HiraginoSans-W3",
+    color: colors.white
   },
   downsideTitle: {
     fontSize: 11,
-    fontWeight: 'bold',
-    fontFamily: 'HiraginoSans-W3',
-    color: colors.white,
+    fontWeight: "bold",
+    fontFamily: "HiraginoSans-W3",
+    color: colors.white
   },
   overlay: {
-    position: 'absolute',
+    position: "absolute",
     left: 0,
     top: 0,
     opacity: 0.5,
-    backgroundColor: 'black',
-    width: '100%',
-    zIndex: 1,
-  },
-})
+    backgroundColor: "black",
+    width: "100%",
+    zIndex: 1
+  }
+});
 
-export default ThumbnailCard
+export default ThumbnailCard;
