@@ -4,7 +4,7 @@ import { Body, Header, Left, Right, Title } from "native-base";
 import { colors } from "../constants";
 import { BackIcon, ShareIcon } from "../components";
 
-export default navigation => ({
+export default (navigation: any) => ({
   header: () => {
     const { title, source_url } = navigation.state.params;
 

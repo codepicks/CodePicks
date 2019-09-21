@@ -31,7 +31,7 @@ type State = {
   showModal: boolean;
 };
 class PickIcon extends Component<Props, State> {
-  constructor(props) {
+  constructor(props: Props) {
     super(props);
 
     this.state = {
@@ -84,7 +84,7 @@ class PickIcon extends Component<Props, State> {
   }
 }
 
-const StateToProps = ({ auth }) => {
+const StateToProps = ({ auth }: any) => {
   return {
     auth
   };
@@ -95,4 +95,5 @@ export default connect(
   {
     pickArticleSelect
   }
+  // @ts-ignore // TODO: use react-redux hooks
 )(withNavigation(PickIcon));

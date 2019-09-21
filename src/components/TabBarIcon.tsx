@@ -8,8 +8,9 @@ type Props = {
   name: string;
   focused: boolean;
 };
-const TabBarIcon = ({ type, name, focused }: Props) => {
-  const IconComponent = Icon[type || "Ionicons"];
+const TabBarIcon = ({ type = "Ionicons", name, focused }: Props) => {
+  // @ts-ignore
+  const IconComponent = Icon[type];
 
   return (
     <IconComponent

@@ -76,7 +76,7 @@ class ArticleCard extends Component<Props> {
   }
 }
 
-const StateToProps = ({ auth }) => {
+const StateToProps = ({ auth }: any) => {
   return {
     auth
   };

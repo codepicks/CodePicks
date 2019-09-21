@@ -13,7 +13,7 @@ import Analytics from "./src/services/googleAnalytics";
 type Props = { skipLoadingScreen: boolean };
 type State = { isLoadingComplete: boolean };
 export default class App extends React.Component<Props, State> {
-  constructor(props) {
+  constructor(props: Props) {
     super(props);
 
     this.state = {
@@ -35,7 +35,7 @@ export default class App extends React.Component<Props, State> {
       )
     ]);
 
-  handleLoadingError = error => {
+  handleLoadingError = (error: string) => {
     console.warn(error);
   };
 
@@ -49,6 +49,7 @@ export default class App extends React.Component<Props, State> {
 
     if (!isLoadingComplete && !skipLoadingScreen) {
       return (
+        // @ts-ignore
         <AppLoading
           // @ts-ignore not compatible with Promise.all
           startAsync={this.loadResourcesAsync}
@@ -58,6 +59,7 @@ export default class App extends React.Component<Props, State> {
       );
     }
     return (
+      // @ts-ignore
       <Provider store={store}>
         {Platform.OS === "ios" && <StatusBar barStyle="default" />}
         <AppNavigator

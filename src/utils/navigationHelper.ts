@@ -1,6 +1,6 @@
 import { StackActions, NavigationActions } from "react-navigation";
 
-export const getCurrentRouteName = (navigationState: any) => {
+export const getCurrentRouteName = (navigationState: any): string | null => {
   if (!navigationState) {
     return null;
   }
@@ -12,7 +12,9 @@ export const getCurrentRouteName = (navigationState: any) => {
   return route.routeName;
 };
 
-export const getCurrentRouteParams = (navigationState: any) => {
+export const getCurrentRouteParams = (
+  navigationState: any
+): Record<string, any> | null => {
   if (!navigationState) {
     return null;
   }
