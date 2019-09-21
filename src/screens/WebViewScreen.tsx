@@ -9,6 +9,7 @@ import {
 } from "react-native";
 import { Footer } from "native-base";
 import { Icon } from "react-native-elements";
+import { NavigationScreenProps } from "react-navigation";
 import { ViewContainer, PickIcon } from "../components";
 import { colors } from "../constants";
 
@@ -52,10 +53,17 @@ const styles = StyleSheet.create({
     marginRight: 20
   }
 });
-class WebViewScreen extends Component<any, any> {
+
+type Props = {} & NavigationScreenProps;
+
+type State = {
+  hasPrevious: boolean;
+  hasNext: boolean;
+};
+class WebViewScreen extends Component<Props, State> {
   webview: any;
 
-  constructor(props) {
+  constructor(props: Props) {
     super(props);
     this.state = {
       hasPrevious: false,
@@ -67,7 +75,7 @@ class WebViewScreen extends Component<any, any> {
     LayoutAnimation.easeInEaseOut();
   }
 
-  onNavigationStateChange(event) {
+  onNavigationStateChange(event: any) {
     this.setState({
       hasPrevious: event.canGoBack,
       hasNext: event.canGoForward

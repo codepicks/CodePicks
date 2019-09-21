@@ -2,7 +2,7 @@ import { USER_SET_TOKEN, USER_REGISTER_FAILED } from "../actions/types";
 
 const INITIAL_STATE = {};
 
-export default (state = INITIAL_STATE, action) => {
+export default (state = INITIAL_STATE, action: any) => {
   switch (action.type) {
     case USER_SET_TOKEN:
       return { ...INITIAL_STATE, token: action.payload };

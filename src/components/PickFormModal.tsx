@@ -45,7 +45,7 @@ const styles = StyleSheet.create({
 type Props = { isVisible: boolean; pick: any; pickAriticlePost: any };
 type State = { isVisible: boolean; text: string };
 class PickFormModal extends Component<Props, State> {
-  constructor(props) {
+  constructor(props: Props) {
     super(props);
 
     this.state = {
@@ -54,7 +54,7 @@ class PickFormModal extends Component<Props, State> {
     };
   }
 
-  componentWillReceiveProps({ isVisible, pick }) {
+  componentWillReceiveProps({ isVisible, pick }: Props) {
     this.setState({
       isVisible: pick !== null || isVisible
     });
@@ -105,7 +105,7 @@ class PickFormModal extends Component<Props, State> {
   }
 }
 
-const StateToProps = ({ pick }) => {
+const StateToProps = ({ pick }: any) => {
   return {
     pick
   };

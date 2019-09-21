@@ -22,11 +22,12 @@ import { getCurrentRouteName } from "../utils";
 const sharedRoutes = {
   WebView: {
     screen: WebViewScreen,
-    navigationOptions: ({ navigation }) => WebViewNavigationOptions(navigation)
+    navigationOptions: ({ navigation }: any) =>
+      WebViewNavigationOptions(navigation)
   },
   BridgeView: {
     screen: BridgeViewScreen,
-    navigationOptions: ({ navigation }) =>
+    navigationOptions: ({ navigation }: any) =>
       BridgeViewNavigationOptions(navigation)
   }
 };
@@ -41,7 +42,7 @@ const ArticleList = {
     },
     ...sharedRoutes
   }),
-  navigationOptions: ({ navigation }) => ({
+  navigationOptions: ({ navigation }: any) => ({
     title: "エントリー",
     tabBarIcon: ({ focused }: TabBarIconProps) => {
       return (
@@ -88,7 +89,7 @@ const Menu = {
       }
     }
   }),
-  navigationOptions: ({ navigation }) => ({
+  navigationOptions: ({ navigation }: any) => ({
     title: "Settings",
     tabBarIcon: ({ focused }: TabBarIconProps) => (
       <TabBarIcon type="Entypo" focused={focused} name="menu" />

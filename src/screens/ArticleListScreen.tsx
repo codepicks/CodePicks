@@ -70,7 +70,9 @@ class ArticleListScreen extends Component<Props> {
   }
 }
 
-const StateToProps = ({ articles }) => {
+type State = any; // TODO: add type for State
+
+const StateToProps = ({ articles }: State) => {
   return {
     articles
   };

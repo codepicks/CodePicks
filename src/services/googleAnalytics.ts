@@ -1,4 +1,5 @@
 import { Analytics as GoogleAnalytics, Event, ScreenHit } from "expo-analytics";
+// @ts-ignore TODO: add types for dotenv
 import { GOOGLE_ANALYTICS_UID } from "react-native-dotenv";
 import { getCurrentRouteName, getCurrentRouteParams } from "../utils";
 
@@ -7,16 +8,16 @@ class Analytics {
 
   code: any;
 
-  constructor(code = null) {
+  constructor(code = "") {
     this.ga = null;
     this.code = code;
   }
 
-  init = uid => {
+  init = (uid: string) => {
     this.ga = new GoogleAnalytics(this.code, { uid });
   };
 
-  screenHit = (prevState, currentState) => {
+  screenHit = (prevState: any, currentState: any) => {
     if (__DEV__) return;
 
     const currentScreen = getCurrentRouteName(currentState);
@@ -39,9 +40,9 @@ class Analytics {
     this.ga.hit(new ScreenHit(currentScreen));
   };
 
-  eventHit = (category = null, action = null, label = null, value = 0) => {
+  eventHit = (category = "", action = "", label = "", value = 0) => {
     if (!__DEV__ && category && action) {
-      const params = [category, action];
+      const params: [string, string, string?, number?] = [category, action];
 
       if (label) {
         params[2] = label;

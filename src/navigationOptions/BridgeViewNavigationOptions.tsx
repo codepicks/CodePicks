@@ -3,7 +3,7 @@ import { Body, Header, Left, Right } from "native-base";
 import { BackIcon, ShareIcon } from "../components";
 import { colors } from "../constants";
 
-export default navigation => ({
+export default (navigation: any) => ({
   header: () => {
     const { article } = navigation.state.params;
 

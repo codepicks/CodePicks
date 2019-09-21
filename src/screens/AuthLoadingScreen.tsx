@@ -11,7 +11,7 @@ type Props = {
 } & NavigationScreenProps;
 
 class AuthLoadingScreen extends Component<Props> {
-  constructor(props) {
+  constructor(props: Props) {
     super(props);
     this.bootstrapAsync();
   }

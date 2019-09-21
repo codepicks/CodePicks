@@ -24,8 +24,9 @@ type Props = {
   auth: any;
 } & NavigationScreenProps;
 
+type User = any;
 class TwitterLoginButton extends Component<Props> {
-  onSuccess = user => {
+  onSuccess = (user: User) => {
     const { authRegister } = this.props;
     authRegister(user);
 
@@ -53,7 +54,8 @@ class TwitterLoginButton extends Component<Props> {
   }
 }
 
-const StateToProps = ({ auth }) => {
+type State = any; // TODO: add type for State
+const StateToProps = ({ auth }: State) => {
   return {
     auth
   };

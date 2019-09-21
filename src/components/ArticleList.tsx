@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import { FlatList } from "react-native";
+// @ts-ignore no types found
 import TimerMixin from "react-timer-mixin";
 import ArticleCard from "./ArticleCard";
 import ArticleThumbnail from "./ArticleThumbnail";
@@ -11,8 +12,9 @@ type Props = {
 };
 
 type State = { refreshing: boolean };
+type Item = any;
 export default class ArticleList extends Component<Props, State> {
-  constructor(props) {
+  constructor(props: Props) {
     super(props);
 
     this.state = {
@@ -35,7 +37,7 @@ export default class ArticleList extends Component<Props, State> {
     }, 500);
   }
 
-  renderArticle({ item, index }) {
+  renderArticle({ item, index }: { item: Item; index: number }) {
     const { tabLabel } = this.props;
     if (index === 0) {
       return <ArticleThumbnail article={item} />;

@@ -47,6 +47,11 @@ type Props = {
   commentsFetch: any;
 } & NavigationScreenProps;
 
+// TODO: move this type to types folder
+type Comment = {
+  hash: string;
+};
+
 class BridgeViewScreen extends Component<Props> {
   componentWillMount() {
     const { navigation, commentsFetch } = this.props;
@@ -67,10 +72,10 @@ class BridgeViewScreen extends Component<Props> {
   }
 
   // eslint-disable-next-line
-  renderComments(currentComments) {
+  renderComments(currentComments: Comment[]) {
     if (!currentComments) return null;
 
-    return currentComments.map(comment => (
+    return currentComments.map((comment: Comment) => (
       <CommentItem key={comment.hash} item={comment} />
     ));
   }
@@ -102,7 +107,9 @@ class BridgeViewScreen extends Component<Props> {
   }
 }
 
-const StateToProps = ({ comments }) => {
+type State = any; // TODO fix type
+
+const StateToProps = ({ comments }: State) => {
   return {
     comments
   };
